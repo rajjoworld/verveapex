@@ -12,7 +12,7 @@ import ProjectCaseStudy from './pages/ProjectCaseStudy';
 function App() {
   return (
     <Router>
-      <div className="App font-inter">
+      <div className="App font-inter bg-[#0A0A0A] min-h-screen">
         <Header />
         <main>
           <Routes>

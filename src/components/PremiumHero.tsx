@@ -137,55 +137,91 @@ const PremiumHero: React.FC<PremiumHeroProps> = ({ onCTAClick }) => {
   };
 
   return (
-    <div ref={containerRef} className="relative min-h-screen overflow-hidden bg-black">
-      {/* Cinematic Background System */}
+    <div ref={containerRef} className="relative min-h-screen overflow-hidden bg-[#0A0A0A]">
+      {/* Futuristic Background System */}
       <div className="absolute inset-0">
-        {/* Deep Space Gradient */}
+        {/* Deep Space Gradient with Vibrant Accents */}
         <motion.div 
-          className="absolute inset-0 bg-gradient-to-br from-black via-slate-900 to-purple-900/20"
+          className="absolute inset-0 bg-gradient-to-br from-[#0A0A0A] via-slate-900/50 to-purple-900/30"
           style={{ scale, opacity }}
         />
         
-        {/* Luxury Light Rays */}
+        {/* Luminous Network Lines - Representing Global Connectivity */}
         <motion.div 
           className="absolute inset-0"
           style={{ y: y3, x: springX, rotate: springY }}
         >
-          {[...Array(8)].map((_, i) => (
+          {[...Array(6)].map((_, i) => (
             <motion.div
               key={i}
-              className="absolute bg-gradient-to-r from-transparent via-white/5 to-transparent"
+              className="absolute bg-gradient-to-r from-transparent via-[#B065FF]/40 to-transparent"
               style={{
-                width: '2px',
-                height: '200vh',
-                left: `${10 + i * 12}%`,
-                top: '-50vh',
-                transform: `rotate(${15 + i * 8}deg)`,
+                width: '1px',
+                height: '150vh',
+                left: `${15 + i * 15}%`,
+                top: '-25vh',
+                transform: `rotate(${12 + i * 6}deg)`,
               }}
               animate={{
-                opacity: [0, 0.3, 0],
-                scaleY: [0.5, 1, 0.5],
+                opacity: [0, 0.8, 0],
+                scaleY: [0.3, 1, 0.3],
+                boxShadow: [
+                  "0 0 5px #B065FF",
+                  "0 0 20px #B065FF, 0 0 30px #B065FF",
+                  "0 0 5px #B065FF"
+                ]
               }}
               transition={{
-                duration: 4 + i * 0.5,
+                duration: 6 + i * 0.8,
                 repeat: Infinity,
-                delay: i * 0.8,
+                delay: i * 1.2,
                 ease: "easeInOut"
               }}
             />
           ))}
         </motion.div>
 
-        {/* Morphing Luxury Orbs */}
+        {/* Glowing Data Node Network - Convergence Concept */}
         <motion.div className="absolute inset-0">
-          {/* Primary Orb - Gold */}
+          {/* Central Core Node */}
           <motion.div
-            className="absolute w-96 h-96 rounded-full"
+            className="absolute w-32 h-32 rounded-full"
+            style={{
+              top: '45%',
+              left: '50%',
+              background: 'radial-gradient(circle, #B065FF/60, #6633CC/30, transparent 70%)',
+              filter: 'blur(20px)',
+              transform: 'translate(-50%, -50%)',
+              x: springX,
+              y: springY,
+            }}
+            variants={orbVariants}
+            initial="hidden"
+            animate="visible"
+            whileInView={{
+              scale: [1, 1.5, 1],
+              opacity: [0.6, 1, 0.6],
+              boxShadow: [
+                "0 0 20px #B065FF",
+                "0 0 60px #B065FF, 0 0 100px #6633CC",
+                "0 0 20px #B065FF"
+              ]
+            }}
+            transition={{
+              scale: { duration: 4, repeat: Infinity, ease: "easeInOut" },
+              opacity: { duration: 3, repeat: Infinity, ease: "easeInOut" },
+              boxShadow: { duration: 4, repeat: Infinity, ease: "easeInOut" }
+            }}
+          />
+          
+          {/* Satellite Nodes - Moving to Center */}
+          <motion.div
+            className="absolute w-16 h-16 rounded-full"
             style={{
               top: '20%',
-              left: '15%',
-              background: 'radial-gradient(circle, #fbbf24/20, #f59e0b/10, transparent 70%)',
-              filter: 'blur(40px)',
+              left: '20%',
+              background: 'radial-gradient(circle, #6633CC/80, #B065FF/40, transparent 70%)',
+              filter: 'blur(15px)',
               x: springX2,
               y: springY15,
             }}
@@ -193,23 +229,26 @@ const PremiumHero: React.FC<PremiumHeroProps> = ({ onCTAClick }) => {
             initial="hidden"
             animate="visible"
             whileInView={{
-              scale: [1, 1.3, 1],
-              rotate: [0, 180, 360],
+              x: [0, 200, 0],
+              y: [0, 150, 0],
+              scale: [0.8, 1.2, 0.8],
             }}
             transition={{
-              scale: { duration: 8, repeat: Infinity, ease: "easeInOut" },
-              rotate: { duration: 20, repeat: Infinity, ease: "linear" }
+              duration: 8,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: 1
             }}
           />
-          
-          {/* Secondary Orb - Blue */}
+
+          {/* Secondary Satellite Node */}
           <motion.div
-            className="absolute w-80 h-80 rounded-full"
+            className="absolute w-12 h-12 rounded-full"
             style={{
-              top: '60%',
-              right: '20%',
-              background: 'radial-gradient(circle, #3b82f6/15, #1d4ed8/8, transparent 70%)',
-              filter: 'blur(35px)',
+              top: '70%',
+              right: '15%',
+              background: 'radial-gradient(circle, #B065FF/70, #6633CC/35, transparent 70%)',
+              filter: 'blur(12px)',
               x: springXNeg15,
               y: springY2,
             }}
@@ -217,23 +256,25 @@ const PremiumHero: React.FC<PremiumHeroProps> = ({ onCTAClick }) => {
             initial="hidden"
             animate="visible"
             whileInView={{
-              scale: [1, 1.4, 1],
-              rotate: [360, 180, 0],
+              x: [0, -180, 0],
+              y: [0, -120, 0],
+              scale: [0.9, 1.3, 0.9],
+              rotate: [0, 180, 360],
             }}
             transition={{
-              scale: { duration: 10, repeat: Infinity, ease: "easeInOut", delay: 2 },
-              rotate: { duration: 25, repeat: Infinity, ease: "linear", delay: 2 }
+              duration: 10,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: 2
             }}
           />
 
-          {/* Tertiary Orb - Emerald */}
+          {/* Tertiary Node - Portal Ring Effect */}
           <motion.div
-            className="absolute w-64 h-64 rounded-full"
+            className="absolute w-20 h-20 rounded-full border border-[#B065FF]/50"
             style={{
-              top: '40%',
-              left: '60%',
-              background: 'radial-gradient(circle, #10b981/18, #059669/10, transparent 70%)',
-              filter: 'blur(30px)',
+              top: '35%',
+              left: '75%',
               x: springX3,
               y: springYNeg1,
             }}
@@ -241,17 +282,25 @@ const PremiumHero: React.FC<PremiumHeroProps> = ({ onCTAClick }) => {
             initial="hidden"
             animate="visible"
             whileInView={{
-              scale: [1, 1.2, 1],
-              opacity: [0.3, 0.8, 0.3],
+              scale: [1, 2, 1],
+              rotate: [0, 360],
+              borderColor: ["#B065FF80", "#6633CC80", "#B065FF80"],
+              boxShadow: [
+                "0 0 10px #B065FF",
+                "0 0 40px #B065FF, 0 0 60px #6633CC",
+                "0 0 10px #B065FF"
+              ]
             }}
             transition={{
-              scale: { duration: 6, repeat: Infinity, ease: "easeInOut", delay: 4 },
-              opacity: { duration: 4, repeat: Infinity, ease: "easeInOut", delay: 4 }
+              scale: { duration: 6, repeat: Infinity, ease: "easeInOut", delay: 3 },
+              rotate: { duration: 12, repeat: Infinity, ease: "linear", delay: 3 },
+              borderColor: { duration: 4, repeat: Infinity, ease: "easeInOut", delay: 3 },
+              boxShadow: { duration: 5, repeat: Infinity, ease: "easeInOut", delay: 3 }
             }}
           />
         </motion.div>
 
-        {/* Floating Geometric Elements */}
+        {/* Floating Data Particles - Speed & Flow Concept */}
         <motion.div className="absolute inset-0 pointer-events-none">
           {[...Array(15)].map((_, i) => (
             <motion.div
@@ -265,10 +314,10 @@ const PremiumHero: React.FC<PremiumHeroProps> = ({ onCTAClick }) => {
               }}
               initial={{ opacity: 0, scale: 0 }}
               animate={{
-                opacity: [0, 0.6, 0],
+                opacity: [0, 0.8, 0],
                 scale: [0, 1, 0],
                 rotate: [0, 360],
-                y: [-50, 50, -50],
+                y: [-30, 30, -30],
               }}
               transition={{
                 duration: 8 + i * 0.5,
@@ -279,15 +328,15 @@ const PremiumHero: React.FC<PremiumHeroProps> = ({ onCTAClick }) => {
             >
               <div 
                 className={`
-                  ${i % 4 === 0 ? 'w-2 h-2 bg-gradient-to-r from-amber-400 to-orange-500' :
-                    i % 4 === 1 ? 'w-1 h-8 bg-gradient-to-b from-blue-400 to-cyan-500' :
-                    i % 4 === 2 ? 'w-3 h-3 bg-gradient-to-br from-emerald-400 to-teal-500 rotate-45' :
-                    'w-4 h-1 bg-gradient-to-r from-purple-400 to-pink-500'
+                  ${i % 4 === 0 ? 'w-1 h-1 bg-[#B065FF] rounded-full' :
+                    i % 4 === 1 ? 'w-0.5 h-6 bg-gradient-to-b from-[#B065FF] to-[#6633CC] rounded-full' :
+                    i % 4 === 2 ? 'w-2 h-2 bg-[#6633CC] rotate-45 rounded-sm' :
+                    'w-3 h-0.5 bg-gradient-to-r from-[#B065FF] to-[#6633CC] rounded-full'
                   } 
-                  rounded-full opacity-70 shadow-lg
+                  opacity-70 shadow-lg
                 `}
                 style={{
-                  boxShadow: '0 0 20px currentColor',
+                  boxShadow: `0 0 10px ${i % 2 === 0 ? '#B065FF' : '#6633CC'}`,
                 }}
               />
             </motion.div>
@@ -304,29 +353,30 @@ const PremiumHero: React.FC<PremiumHeroProps> = ({ onCTAClick }) => {
       >
         <div className="max-w-7xl mx-auto text-center">
           
-          {/* Premium Brand Badge */}
+          {/* Tech Innovation Badge */}
           <motion.div 
             className="mb-16"
             style={{ y: y2 }}
             variants={textVariants}
           >
             <motion.div
-              className="inline-flex items-center gap-6 px-8 py-4 rounded-full border border-white/10 bg-white/5 backdrop-blur-xl"
+              className="inline-flex items-center gap-6 px-8 py-4 rounded-full border border-[#B065FF]/20 bg-[#B065FF]/5 backdrop-blur-xl"
               whileHover={{ 
                 scale: 1.05, 
-                borderColor: "rgba(255,255,255,0.3)",
-                boxShadow: "0 20px 40px rgba(0,0,0,0.3)"
+                borderColor: "#B065FF80",
+                backgroundColor: "#B065FF10",
+                boxShadow: "0 20px 40px rgba(176, 101, 255, 0.3)"
               }}
               transition={{ duration: 0.5 }}
             >
               <motion.div 
-                className="w-3 h-3 rounded-full bg-gradient-to-r from-amber-400 via-orange-500 to-red-500"
+                className="w-3 h-3 rounded-full bg-gradient-to-r from-[#B065FF] via-[#6633CC] to-[#B065FF]"
                 animate={{ 
                   scale: [1, 1.5, 1],
                   boxShadow: [
-                    "0 0 0 0 rgba(245, 158, 11, 0.7)",
-                    "0 0 0 10px rgba(245, 158, 11, 0)",
-                    "0 0 0 0 rgba(245, 158, 11, 0.7)"
+                    "0 0 0 0 rgba(176, 101, 255, 0.7)",
+                    "0 0 0 10px rgba(176, 101, 255, 0)",
+                    "0 0 0 0 rgba(176, 101, 255, 0.7)"
                   ]
                 }}
                 transition={{ 
@@ -335,15 +385,15 @@ const PremiumHero: React.FC<PremiumHeroProps> = ({ onCTAClick }) => {
                   ease: "easeInOut"
                 }}
               />
-              <span className="text-white/80 text-sm tracking-[0.3em] uppercase font-light">
-                Award-Winning Digital Innovation
+              <span className="text-white/90 text-sm tracking-[0.3em] uppercase font-light">
+                Next-Generation Digital Innovation
               </span>
               <motion.div 
-                className="w-8 h-8 rounded-full border border-white/20 flex items-center justify-center"
+                className="w-8 h-8 rounded-full border border-[#B065FF]/30 flex items-center justify-center"
                 animate={{ rotate: [0, 360] }}
                 transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
               >
-                <div className="w-2 h-2 bg-white/60 rounded-full" />
+                <div className="w-2 h-2 bg-[#B065FF] rounded-full" />
               </motion.div>
             </motion.div>
           </motion.div>
@@ -370,20 +420,34 @@ const PremiumHero: React.FC<PremiumHeroProps> = ({ onCTAClick }) => {
               </motion.div>
               <motion.div className="overflow-hidden relative">
                 <motion.span 
-                  className="block relative z-10"
+                  className="block relative z-10 bg-gradient-to-r from-[#B065FF] via-white to-[#6633CC] bg-clip-text text-transparent"
                   initial={{ y: 200, opacity: 0 }}
                   animate={isInView ? { y: 0, opacity: 1 } : {}}
                   transition={{ duration: 1.5, delay: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
-                  style={{ x: springX10 }}
+                  style={{ 
+                    x: springX10,
+                    backgroundSize: "200% 200%"
+                  }}
                 >
-                  APEX
+                  <motion.span
+                    animate={{
+                      backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
+                    }}
+                    transition={{
+                      duration: 6,
+                      repeat: Infinity,
+                      ease: "linear"
+                    }}
+                  >
+                    APEX
+                  </motion.span>
                 </motion.span>
-                {/* Cinematic Glow Effect */}
+                {/* Enhanced Luminous Glow Effect */}
                 <motion.div
-                  className="absolute inset-0 bg-gradient-to-r from-amber-500/30 via-orange-500/40 to-red-500/30 blur-3xl"
+                  className="absolute inset-0 bg-gradient-to-r from-[#B065FF]/40 via-[#6633CC]/50 to-[#B065FF]/40 blur-3xl"
                   animate={{
-                    scale: [1, 1.5, 1],
-                    opacity: [0.3, 0.8, 0.3],
+                    scale: [1, 1.8, 1],
+                    opacity: [0.4, 1, 0.4],
                   }}
                   transition={{
                     duration: 4,
@@ -408,19 +472,11 @@ const PremiumHero: React.FC<PremiumHeroProps> = ({ onCTAClick }) => {
               transition={{ delay: 1.2 }}
             >
               <motion.p 
-                className="text-2xl sm:text-3xl lg:text-4xl text-white/70 font-light leading-relaxed mb-8"
-                animate={{
-                  backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
-                }}
-                transition={{
-                  duration: 8,
-                  repeat: Infinity,
-                  ease: "linear"
-                }}
+                className="text-2xl sm:text-3xl lg:text-4xl text-white/80 font-light leading-relaxed mb-8"
               >
                 We don't just build products —{" "}
                 <motion.span 
-                  className="bg-gradient-to-r from-amber-400 via-orange-500 to-red-500 bg-clip-text text-transparent font-normal"
+                  className="bg-gradient-to-r from-[#B065FF] via-white to-[#6633CC] bg-clip-text text-transparent font-normal"
                   style={{ backgroundSize: "200% 200%" }}
                   animate={{
                     backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
@@ -431,9 +487,9 @@ const PremiumHero: React.FC<PremiumHeroProps> = ({ onCTAClick }) => {
                     ease: "linear"
                   }}
                 >
-                  we craft digital masterpieces
+                  we engineer digital futures
                 </motion.span>{" "}
-                that redefine entire industries
+                that transform entire ecosystems
               </motion.p>
             </motion.div>
           </motion.div>
@@ -447,27 +503,32 @@ const PremiumHero: React.FC<PremiumHeroProps> = ({ onCTAClick }) => {
           >
             <motion.button
               onClick={onCTAClick}
-              className="group relative px-16 py-6 bg-gradient-to-r from-amber-500 via-orange-500 to-red-500 text-white font-medium text-lg rounded-full overflow-hidden"
+              className="group relative px-16 py-6 bg-gradient-to-r from-[#B065FF] via-[#6633CC] to-[#B065FF] text-white font-medium text-lg rounded-full overflow-hidden"
               whileHover={{ scale: 1.05, y: -5 }}
               whileTap={{ scale: 0.95 }}
               transition={{ type: "spring", stiffness: 400, damping: 10 }}
               style={{
-                boxShadow: "0 20px 40px rgba(245, 158, 11, 0.3)"
+                boxShadow: "0 20px 40px rgba(176, 101, 255, 0.4)"
               }}
             >
               <motion.div
-                className="absolute inset-0 bg-gradient-to-r from-red-500 via-pink-500 to-purple-500"
+                className="absolute inset-0 bg-gradient-to-r from-[#6633CC] via-[#B065FF] to-[#6633CC]"
                 initial={{ x: "-100%" }}
                 whileHover={{ x: "0%" }}
                 transition={{ duration: 0.6, ease: "easeOut" }}
               />
               <span className="relative z-10 flex items-center gap-4">
-                Begin the Journey
+                Enter the Future
                 <motion.div
                   className="w-2 h-2 bg-white rounded-full"
                   animate={{
                     scale: [1, 2, 1],
-                    opacity: [1, 0.5, 1]
+                    opacity: [1, 0.5, 1],
+                    boxShadow: [
+                      "0 0 5px white",
+                      "0 0 15px white",
+                      "0 0 5px white"
+                    ]
                   }}
                   transition={{
                     duration: 2,
@@ -479,22 +540,27 @@ const PremiumHero: React.FC<PremiumHeroProps> = ({ onCTAClick }) => {
             </motion.button>
 
             <motion.button
-              className="group px-16 py-6 border border-white/20 text-white/80 font-medium text-lg rounded-full backdrop-blur-xl hover:bg-white/5 hover:border-white/40 transition-all duration-700"
+              className="group px-16 py-6 border border-[#B065FF]/30 text-white/90 font-medium text-lg rounded-full backdrop-blur-xl hover:bg-[#B065FF]/10 hover:border-[#B065FF]/60 transition-all duration-700"
               whileHover={{ scale: 1.05, y: -5 }}
               whileTap={{ scale: 0.95 }}
             >
               <span className="flex items-center gap-4">
-                Explore Masterpieces
+                Explore Innovation
                 <motion.div
-                  className="w-8 h-8 border border-white/30 rounded-full flex items-center justify-center"
+                  className="w-8 h-8 border border-[#B065FF]/40 rounded-full flex items-center justify-center"
                   whileHover={{ rotate: 180 }}
                   transition={{ duration: 0.5 }}
                 >
                   <motion.div
-                    className="w-1 h-1 bg-white/60 rounded-full"
+                    className="w-1 h-1 bg-[#B065FF] rounded-full"
                     animate={{
                       scale: [1, 1.5, 1],
-                      opacity: [0.6, 1, 0.6]
+                      opacity: [0.6, 1, 0.6],
+                      boxShadow: [
+                        "0 0 3px #B065FF",
+                        "0 0 10px #B065FF",
+                        "0 0 3px #B065FF"
+                      ]
                     }}
                     transition={{
                       duration: 3,
@@ -507,7 +573,7 @@ const PremiumHero: React.FC<PremiumHeroProps> = ({ onCTAClick }) => {
             </motion.button>
           </motion.div>
 
-          {/* Luxury Metrics */}
+          {/* Future-Tech Metrics */}
           <motion.div 
             className="grid grid-cols-2 lg:grid-cols-4 gap-12 max-w-6xl mx-auto"
             initial={{ opacity: 0, y: 80 }}
@@ -515,10 +581,10 @@ const PremiumHero: React.FC<PremiumHeroProps> = ({ onCTAClick }) => {
             transition={{ duration: 2, delay: 2.5 }}
           >
             {[
-              { metric: "15+", label: "Years of Mastery", color: "from-amber-400 to-orange-500" },
-              { metric: "200+", label: "Digital Masterpieces", color: "from-blue-400 to-cyan-500" },
-              { metric: "99.8%", label: "Client Excellence", color: "from-emerald-400 to-teal-500" },
-              { metric: "∞", label: "Infinite Possibilities", color: "from-purple-400 to-pink-500" }
+              { metric: "15+", label: "Years of Innovation", color: "from-[#B065FF] to-[#6633CC]" },
+              { metric: "200+", label: "Digital Solutions", color: "from-[#6633CC] to-[#B065FF]" },
+              { metric: "99.8%", label: "Client Success", color: "from-[#B065FF] to-white" },
+              { metric: "∞", label: "Infinite Possibilities", color: "from-white to-[#B065FF]" }
             ].map((item, index) => (
               <motion.div 
                 key={index}
@@ -532,6 +598,11 @@ const PremiumHero: React.FC<PremiumHeroProps> = ({ onCTAClick }) => {
                   className={`text-5xl lg:text-6xl xl:text-7xl font-thin bg-gradient-to-r ${item.color} bg-clip-text text-transparent mb-4`}
                   animate={{
                     scale: [1, 1.05, 1],
+                    filter: [
+                      "drop-shadow(0 0 5px #B065FF)",
+                      "drop-shadow(0 0 20px #B065FF)",
+                      "drop-shadow(0 0 5px #B065FF)"
+                    ]
                   }}
                   transition={{
                     duration: 4,
@@ -542,7 +613,7 @@ const PremiumHero: React.FC<PremiumHeroProps> = ({ onCTAClick }) => {
                 >
                   {item.metric}
                 </motion.div>
-                <div className="text-white/60 text-sm tracking-wider font-light uppercase">
+                <div className="text-white/70 text-sm tracking-wider font-light uppercase">
                   {item.label}
                 </div>
               </motion.div>
@@ -551,7 +622,7 @@ const PremiumHero: React.FC<PremiumHeroProps> = ({ onCTAClick }) => {
         </div>
       </motion.div>
 
-      {/* Cinematic Scroll Indicator */}
+      {/* Enhanced Scroll Indicator */}
       <motion.div 
         className="absolute bottom-16 left-1/2 transform -translate-x-1/2"
         initial={{ opacity: 0, y: 30 }}
@@ -560,15 +631,24 @@ const PremiumHero: React.FC<PremiumHeroProps> = ({ onCTAClick }) => {
         style={{ y: y3 }}
       >
         <motion.div 
-          className="w-8 h-16 border border-white/20 rounded-full flex justify-center p-3 backdrop-blur-xl"
-          whileHover={{ borderColor: "rgba(255,255,255,0.5)", scale: 1.1 }}
+          className="w-8 h-16 border border-[#B065FF]/30 rounded-full flex justify-center p-3 backdrop-blur-xl"
+          whileHover={{ 
+            borderColor: "#B065FF80", 
+            scale: 1.1,
+            boxShadow: "0 0 20px rgba(176, 101, 255, 0.5)"
+          }}
           transition={{ duration: 0.3 }}
         >
           <motion.div 
-            className="w-1 h-4 bg-gradient-to-b from-amber-400 via-orange-500 to-red-500 rounded-full"
+            className="w-1 h-4 bg-gradient-to-b from-[#B065FF] via-[#6633CC] to-[#B065FF] rounded-full"
             animate={{ 
               y: [0, 20, 0],
-              opacity: [1, 0.3, 1]
+              opacity: [1, 0.3, 1],
+              boxShadow: [
+                "0 0 5px #B065FF",
+                "0 0 15px #B065FF",
+                "0 0 5px #B065FF"
+              ]
             }}
             transition={{ 
               duration: 3, 
@@ -578,9 +658,10 @@ const PremiumHero: React.FC<PremiumHeroProps> = ({ onCTAClick }) => {
           />
         </motion.div>
         <motion.div 
-          className="text-white/40 text-xs tracking-[0.2em] mt-6 uppercase font-light"
+          className="text-white/60 text-xs tracking-[0.2em] mt-6 uppercase font-light"
           animate={{
-            opacity: [0.4, 1, 0.4]
+            opacity: [0.4, 1, 0.4],
+            color: ["rgba(255,255,255,0.6)", "rgba(176,101,255,0.8)", "rgba(255,255,255,0.6)"]
           }}
           transition={{
             duration: 4,
@@ -588,14 +669,26 @@ const PremiumHero: React.FC<PremiumHeroProps> = ({ onCTAClick }) => {
             ease: "easeInOut"
           }}
         >
-          Discover
+          Explore
         </motion.div>
       </motion.div>
 
-      {/* Cinematic Vignette */}
+      {/* Enhanced Futuristic Vignette */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-transparent to-black/50" />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/60" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0A0A0A]/60 via-transparent to-[#0A0A0A]/60" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0A0A0A]/40 via-transparent to-[#0A0A0A]/80" />
+        <motion.div 
+          className="absolute inset-0 bg-gradient-radial from-transparent via-[#B065FF]/5 to-transparent"
+          animate={{
+            opacity: [0.3, 0.6, 0.3],
+            scale: [1, 1.2, 1]
+          }}
+          transition={{
+            duration: 8,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        />
       </div>
     </div>
   );

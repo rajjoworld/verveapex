@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 const Portfolio: React.FC = () => {
   const projects = [
@@ -9,7 +10,7 @@ const Portfolio: React.FC = () => {
       industry: 'FinTech',
       tagline: 'Secured 50,000+ Users, 30% Lower Fees',
       description: 'A secure, efficient cross-border money transfer platform with AI-powered fraud detection.',
-      image: 'https://placehold.co/600x400/0ea5e9/ffffff?text=Remittance+Platform',
+      image: 'https://placehold.co/600x400/B065FF/ffffff?text=Remittance+Platform',
       technologies: ['Flutter', 'Node.js', 'PostgreSQL', 'AWS'],
       results: ['50,000+ Users', '30% Lower Fees', '90% Faster Transfers']
     },
@@ -19,7 +20,7 @@ const Portfolio: React.FC = () => {
       industry: 'FinTech / Identity Verification',
       tagline: 'Reduced KYC Time by 75%',
       description: 'Automated KYC system with AI-powered OCR and facial recognition for streamlined onboarding.',
-      image: 'https://placehold.co/600x400/0ea5e9/ffffff?text=KYC+Verification',
+      image: 'https://placehold.co/600x400/B065FF/ffffff?text=KYC+Verification',
       technologies: ['React', 'Flutter', 'Python/Django', 'AWS Rekognition'],
       results: ['75% Time Reduction', '20% Higher Conversion', '99.5% Accuracy']
     },
@@ -29,7 +30,7 @@ const Portfolio: React.FC = () => {
       industry: 'HealthTech / AI',
       tagline: '40% Efficiency Improvement for Doctors',
       description: 'AI-powered conversational chatbot providing instant drug information and clinical decision support.',
-      image: 'https://placehold.co/600x400/0ea5e9/ffffff?text=PharmBot+AI',
+      image: 'https://placehold.co/600x400/B065FF/ffffff?text=PharmBot+AI',
       technologies: ['Flutter', 'Python', 'Google Cloud AI', 'PostgreSQL'],
       results: ['40% Efficiency Gain', '15% Error Reduction', '95% User Satisfaction']
     },
@@ -39,136 +40,173 @@ const Portfolio: React.FC = () => {
       industry: 'HR Tech / AI',
       tagline: '30% Faster Hiring Process',
       description: 'Full-stack platform leveraging AI for resume analysis, candidate matching, and screening automation.',
-      image: 'https://placehold.co/600x400/0ea5e9/ffffff?text=AI+Hiring+Platform',
+      image: 'https://placehold.co/600x400/B065FF/ffffff?text=AI+Hiring+Platform',
       technologies: ['React', 'React Native', 'Python/Flask', 'TensorFlow'],
       results: ['30% Faster Hiring', '25% Better Quality', '50% Reduced Workload']
     }
   ];
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-[#0A0A0A]">
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-primary-50 to-blue-50 py-20">
+      <section className="bg-gradient-to-br from-[#0A0A0A] via-[#1A0A1A] to-[#0A0A0A] py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
-            Our <span className="text-primary-600">Success Stories</span>
-          </h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <motion.h1 
+            className="text-4xl lg:text-5xl font-bold text-white mb-6"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            Our{' '}
+            <span className="bg-gradient-to-r from-[#B065FF] to-white bg-clip-text text-transparent">
+              Success Stories
+            </span>
+          </motion.h1>
+          <motion.p 
+            className="text-xl text-white/70 max-w-3xl mx-auto"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
             Concrete evidence of our expertise and the tangible impact we deliver for international clients. 
             Each project showcases our commitment to building scalable, innovative solutions.
-          </p>
+          </motion.p>
         </div>
       </section>
 
       {/* Projects Grid */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-[#0A0A0A]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            {projects.map((project) => (
-              <Link
+            {projects.map((project, index) => (
+              <motion.div
                 key={project.id}
-                to={`/portfolio/${project.id}`}
-                className="group bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
               >
-                <div className="aspect-w-16 aspect-h-10">
-                  <img
-                    src={project.image}
-                    alt={project.name}
-                    className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
-                  />
-                </div>
-                <div className="p-8">
-                  <div className="flex items-center justify-between mb-4">
-                    <span className="bg-primary-100 text-primary-700 px-3 py-1 rounded-full text-sm font-medium">
-                      {project.industry}
-                    </span>
-                    <span className="text-sm text-gray-500">Case Study →</span>
+                <Link
+                  to={`/portfolio/${project.id}`}
+                  className="group bg-[#0A0A0A] border border-[#B065FF]/20 rounded-2xl hover:border-[#B065FF]/40 hover:shadow-2xl hover:shadow-[#B065FF]/10 transition-all duration-300 overflow-hidden block"
+                >
+                  <div className="aspect-w-16 aspect-h-10">
+                    <img
+                      src={project.image}
+                      alt={project.name}
+                      className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
                   </div>
-                  
-                  <h3 className="text-2xl font-bold text-gray-900 mb-3 group-hover:text-primary-600 transition-colors">
-                    {project.name}
-                  </h3>
-                  
-                  <p className="text-primary-600 font-semibold mb-4">
-                    {project.tagline}
-                  </p>
-                  
-                  <p className="text-gray-600 mb-6">
-                    {project.description}
-                  </p>
-                  
-                  <div className="mb-6">
-                    <h4 className="text-sm font-semibold text-gray-900 mb-2">Technologies:</h4>
-                    <div className="flex flex-wrap gap-2">
-                      {project.technologies.map((tech, index) => (
-                        <span
-                          key={index}
-                          className="bg-gray-100 text-gray-700 px-2 py-1 rounded text-sm"
-                        >
-                          {tech}
-                        </span>
-                      ))}
+                  <div className="p-8">
+                    <div className="flex items-center justify-between mb-4">
+                      <span className="bg-[#B065FF]/20 text-[#B065FF] px-3 py-1 rounded-full text-sm font-medium border border-[#B065FF]/30">
+                        {project.industry}
+                      </span>
+                      <span className="text-sm text-white/50">Case Study →</span>
+                    </div>
+                    
+                    <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-[#B065FF] transition-colors">
+                      {project.name}
+                    </h3>
+                    
+                    <p className="text-[#B065FF] font-semibold mb-4">
+                      {project.tagline}
+                    </p>
+                    
+                    <p className="text-white/70 mb-6">
+                      {project.description}
+                    </p>
+                    
+                    <div className="mb-6">
+                      <h4 className="text-sm font-semibold text-white mb-2">Technologies:</h4>
+                      <div className="flex flex-wrap gap-2">
+                        {project.technologies.map((tech, index) => (
+                          <span
+                            key={index}
+                            className="bg-[#B065FF]/10 text-[#B065FF] px-2 py-1 rounded text-sm border border-[#B065FF]/20"
+                          >
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                    
+                    <div>
+                      <h4 className="text-sm font-semibold text-white mb-2">Key Results:</h4>
+                      <div className="grid grid-cols-3 gap-4">
+                        {project.results.map((result, index) => (
+                          <div key={index} className="text-center">
+                            <div className="text-sm font-semibold text-[#B065FF]">{result}</div>
+                          </div>
+                        ))}
+                      </div>
                     </div>
                   </div>
-                  
-                  <div>
-                    <h4 className="text-sm font-semibold text-gray-900 mb-2">Key Results:</h4>
-                    <div className="grid grid-cols-3 gap-4">
-                      {project.results.map((result, index) => (
-                        <div key={index} className="text-center">
-                          <div className="text-sm font-semibold text-primary-600">{result}</div>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </Link>
+                </Link>
+              </motion.div>
             ))}
           </div>
         </div>
       </section>
 
       {/* Trust Indicators */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-20 bg-[#0A0A0A]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
-              Proven Track Record
+          <motion.div 
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <h2 className="text-3xl lg:text-4xl font-bold text-white mb-4">
+              Proven{' '}
+              <span className="bg-gradient-to-r from-[#B065FF] to-white bg-clip-text text-transparent">
+                Track Record
+              </span>
             </h2>
-            <p className="text-xl text-gray-600">
+            <p className="text-xl text-white/70">
               Our portfolio demonstrates consistent delivery of high-impact solutions across industries
             </p>
-          </div>
+          </motion.div>
           
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            <div className="text-center bg-white p-8 rounded-2xl shadow-lg">
-              <div className="text-3xl font-bold text-primary-600 mb-2">4+</div>
-              <div className="text-gray-600">Industries Served</div>
-            </div>
-            <div className="text-center bg-white p-8 rounded-2xl shadow-lg">
-              <div className="text-3xl font-bold text-primary-600 mb-2">$5M+</div>
-              <div className="text-gray-600">Funding Raised by Clients</div>
-            </div>
-            <div className="text-center bg-white p-8 rounded-2xl shadow-lg">
-              <div className="text-3xl font-bold text-primary-600 mb-2">100K+</div>
-              <div className="text-gray-600">End Users Served</div>
-            </div>
-            <div className="text-center bg-white p-8 rounded-2xl shadow-lg">
-              <div className="text-3xl font-bold text-primary-600 mb-2">AI/ML</div>
-              <div className="text-gray-600">Cutting-Edge Tech</div>
-            </div>
+            {[
+              { value: '4+', label: 'Industries Served' },
+              { value: '$5M+', label: 'Funding Raised by Clients' },
+              { value: '100K+', label: 'End Users Served' },
+              { value: 'AI/ML', label: 'Cutting-Edge Tech' }
+            ].map((stat, index) => (
+              <motion.div 
+                key={index}
+                className="text-center bg-[#0A0A0A] border border-[#B065FF]/20 p-8 rounded-2xl hover:border-[#B065FF]/40 hover:shadow-lg hover:shadow-[#B065FF]/10 transition-all duration-300"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                whileHover={{ y: -5 }}
+              >
+                <div className="text-3xl font-bold text-[#B065FF] mb-2">{stat.value}</div>
+                <div className="text-white/70">{stat.label}</div>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* Industries */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-[#0A0A0A]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
-              Industries We Excel In
+          <motion.div 
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <h2 className="text-3xl lg:text-4xl font-bold text-white mb-4">
+              Industries We{' '}
+              <span className="bg-gradient-to-r from-[#B065FF] to-white bg-clip-text text-transparent">
+                Excel In
+              </span>
             </h2>
-          </div>
+          </motion.div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
@@ -177,39 +215,61 @@ const Portfolio: React.FC = () => {
               { name: 'HR Tech', icon: '👥', description: 'Recruitment platforms, workforce management, AI matching' },
               { name: 'EdTech', icon: '📚', description: 'Learning platforms, skill assessment, educational AI' }
             ].map((industry, index) => (
-              <div key={index} className="text-center p-6 rounded-2xl border border-gray-200 hover:border-primary-200 hover:shadow-lg transition-all duration-200">
+              <motion.div 
+                key={index} 
+                className="text-center p-6 rounded-2xl border border-[#B065FF]/20 hover:border-[#B065FF]/40 hover:shadow-lg hover:shadow-[#B065FF]/10 transition-all duration-300"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                whileHover={{ y: -5 }}
+              >
                 <div className="text-4xl mb-4">{industry.icon}</div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">{industry.name}</h3>
-                <p className="text-gray-600 text-sm">{industry.description}</p>
-              </div>
+                <h3 className="text-lg font-semibold text-white mb-2">{industry.name}</h3>
+                <p className="text-white/70 text-sm">{industry.description}</p>
+              </motion.div>
             ))}
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-primary-600">
+      <section className="py-20 bg-gradient-to-r from-[#B065FF] to-[#6633CC]">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl lg:text-4xl font-bold text-white mb-8">
+          <motion.h2 
+            className="text-3xl lg:text-4xl font-bold text-white mb-8"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
             Ready to Create Your Success Story?
-          </h2>
-          <p className="text-xl text-primary-100 mb-8">
+          </motion.h2>
+          <motion.p 
+            className="text-xl text-white/90 mb-8"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
             Join the ranks of successful entrepreneurs who trusted Verve Apex to bring their vision to life.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          </motion.p>
+          <motion.div 
+            className="flex flex-col sm:flex-row gap-4 justify-center"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+          >
             <Link
               to="/contact"
-              className="bg-white text-primary-600 px-8 py-4 rounded-xl text-lg font-semibold hover:bg-gray-100 transition-colors duration-200"
+              className="bg-white text-[#B065FF] px-8 py-4 rounded-xl text-lg font-semibold hover:bg-white/90 transition-all duration-300 hover:shadow-lg hover:shadow-white/20"
             >
               Start Your Project
             </Link>
             <Link
               to="/services"
-              className="border border-white text-white px-8 py-4 rounded-xl text-lg font-semibold hover:bg-white hover:text-primary-600 transition-colors duration-200"
+              className="border border-white text-white px-8 py-4 rounded-xl text-lg font-semibold hover:bg-white hover:text-[#B065FF] transition-all duration-300"
             >
               View Our Services
             </Link>
-          </div>
+          </motion.div>
         </div>
       </section>
     </div>

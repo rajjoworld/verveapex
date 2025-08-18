@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 const About: React.FC = () => {
   const values = [
@@ -70,27 +71,49 @@ const About: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-[#0A0A0A]">
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-primary-50 to-blue-50 py-20">
+      <section className="bg-gradient-to-br from-[#0A0A0A] via-[#1A0A1A] to-[#0A0A0A] py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
-            About <span className="text-primary-600">Verve Apex</span>
-          </h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <motion.h1 
+            className="text-4xl lg:text-5xl font-bold text-white mb-6"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            About{' '}
+            <span className="bg-gradient-to-r from-[#B065FF] to-white bg-clip-text text-transparent">
+              Verve Apex
+            </span>
+          </motion.h1>
+          <motion.p 
+            className="text-xl text-white/70 max-w-3xl mx-auto"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
             Your premier full-stack technology partner, empowering international clients to transform 
             ideas into impactful, scalable digital products.
-          </p>
+          </motion.p>
         </div>
       </section>
 
       {/* Our Story */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-[#0A0A0A]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-6">Our Story</h2>
-              <div className="space-y-4 text-gray-600">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+            >
+              <h2 className="text-3xl lg:text-4xl font-bold text-white mb-6">
+                Our{' '}
+                <span className="bg-gradient-to-r from-[#B065FF] to-white bg-clip-text text-transparent">
+                  Story
+                </span>
+              </h2>
+              <div className="space-y-4 text-white/70">
                 <p>
                   Verve Apex was born from a simple yet powerful vision: to bridge the gap between 
                   ambitious international entrepreneurs and world-class technical expertise, without 
@@ -113,65 +136,116 @@ const About: React.FC = () => {
                   and secure funding for their growth.
                 </p>
               </div>
-            </div>
-            <div>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+            >
               <img
-                src="https://placehold.co/600x400/E0F2F7/000000?text=Our+Journey"
+                src="https://placehold.co/600x400/B065FF/ffffff?text=Our+Journey"
                 alt="Our Journey"
-                className="rounded-2xl shadow-xl"
+                className="rounded-2xl shadow-xl border border-[#B065FF]/20"
               />
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
 
       {/* Mission */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-20 bg-[#0A0A0A]">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-8">Our Mission</h2>
-          <p className="text-xl text-gray-600 leading-relaxed">
+          <motion.h2 
+            className="text-3xl lg:text-4xl font-bold text-white mb-8"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            Our{' '}
+            <span className="bg-gradient-to-r from-[#B065FF] to-white bg-clip-text text-transparent">
+              Mission
+            </span>
+          </motion.h2>
+          <motion.p 
+            className="text-xl text-white/70 leading-relaxed"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
             "To empower global innovators with cutting-edge, cost-effective technology solutions 
             that transform ideas into impactful, scalable products. We believe every entrepreneur 
             deserves access to world-class technical expertise, regardless of their location or budget."
-          </p>
+          </motion.p>
         </div>
       </section>
 
       {/* Values */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-[#0A0A0A]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">Our Values</h2>
-            <p className="text-xl text-gray-600">
+          <motion.div 
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <h2 className="text-3xl lg:text-4xl font-bold text-white mb-4">
+              Our{' '}
+              <span className="bg-gradient-to-r from-[#B065FF] to-white bg-clip-text text-transparent">
+                Values
+              </span>
+            </h2>
+            <p className="text-xl text-white/70">
               The principles that guide every decision and drive our commitment to excellence
             </p>
-          </div>
+          </motion.div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {values.map((value, index) => (
-              <div key={index} className="bg-white p-8 rounded-2xl border border-gray-200 hover:border-primary-200 hover:shadow-lg transition-all duration-200">
+              <motion.div 
+                key={index} 
+                className="bg-[#0A0A0A] border border-[#B065FF]/20 p-8 rounded-2xl hover:border-[#B065FF]/40 hover:shadow-lg hover:shadow-[#B065FF]/10 transition-all duration-300"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                whileHover={{ y: -5 }}
+              >
                 <div className="text-4xl mb-4 text-center">{value.icon}</div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-4 text-center">{value.title}</h3>
-                <p className="text-gray-600 text-center">{value.description}</p>
-              </div>
+                <h3 className="text-xl font-semibold text-white mb-4 text-center">{value.title}</h3>
+                <p className="text-white/70 text-center">{value.description}</p>
+              </motion.div>
             ))}
           </div>
         </div>
       </section>
 
       {/* Meet the Lead */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-20 bg-[#0A0A0A]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">Meet the Lead</h2>
-          </div>
+          <motion.div 
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <h2 className="text-3xl lg:text-4xl font-bold text-white mb-4">
+              Meet the{' '}
+              <span className="bg-gradient-to-r from-[#B065FF] to-white bg-clip-text text-transparent">
+                Lead
+              </span>
+            </h2>
+          </motion.div>
           <div className="max-w-4xl mx-auto">
-            <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
+            <motion.div 
+              className="bg-[#0A0A0A] border border-[#B065FF]/20 rounded-2xl shadow-xl overflow-hidden"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+            >
               <div className="grid grid-cols-1 md:grid-cols-2">
                 <div className="p-8 md:p-12">
                   <div className="text-center md:text-left">
-                    <h3 className="text-2xl font-bold text-gray-900 mb-2">John Smith</h3>
-                    <p className="text-primary-600 font-semibold mb-6">Founder & Lead Architect / Product Strategist</p>
-                    <div className="space-y-4 text-gray-600">
+                    <h3 className="text-2xl font-bold text-white mb-2">John Smith</h3>
+                    <p className="text-[#B065FF] font-semibold mb-6">Founder & Lead Architect / Product Strategist</p>
+                    <div className="space-y-4 text-white/70">
                       <p>
                         With over 15 years of experience as a team lead and full-stack architect, 
                         John has successfully guided dozens of startups from concept to market success.
@@ -189,101 +263,140 @@ const About: React.FC = () => {
                     </div>
                     <div className="mt-6 flex flex-wrap gap-2">
                       {['Team Leadership', 'Full-Stack Development', 'Product Strategy', 'Startup Mentoring'].map((skill) => (
-                        <span key={skill} className="bg-primary-100 text-primary-700 px-3 py-1 rounded-full text-sm">
+                        <span key={skill} className="bg-[#B065FF]/20 text-[#B065FF] px-3 py-1 rounded-full text-sm border border-[#B065FF]/30">
                           {skill}
                         </span>
                       ))}
                     </div>
                   </div>
                 </div>
-                <div className="bg-gradient-to-br from-primary-100 to-blue-100 flex items-center justify-center p-8">
+                <div className="bg-gradient-to-br from-[#B065FF]/20 to-[#6633CC]/20 flex items-center justify-center p-8">
                   <img
-                    src="https://placehold.co/300x300/0ea5e9/ffffff?text=John+Smith"
+                    src="https://placehold.co/300x300/B065FF/ffffff?text=John+Smith"
                     alt="John Smith"
-                    className="w-64 h-64 rounded-full shadow-2xl"
+                    className="w-64 h-64 rounded-full shadow-2xl border-4 border-[#B065FF]/30"
                   />
                 </div>
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
 
       {/* Our Process */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-[#0A0A0A]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">Our Process</h2>
-            <p className="text-xl text-gray-600">
+          <motion.div 
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <h2 className="text-3xl lg:text-4xl font-bold text-white mb-4">
+              Our{' '}
+              <span className="bg-gradient-to-r from-[#B065FF] to-white bg-clip-text text-transparent">
+                Process
+              </span>
+            </h2>
+            <p className="text-xl text-white/70">
               A proven methodology that ensures quality, transparency, and successful project delivery
             </p>
-          </div>
+          </motion.div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {processSteps.map((step, index) => (
-              <div key={index} className="text-center p-6 rounded-2xl border border-gray-200 hover:border-primary-200 hover:shadow-lg transition-all duration-200">
+              <motion.div 
+                key={index} 
+                className="text-center p-6 rounded-2xl border border-[#B065FF]/20 hover:border-[#B065FF]/40 hover:shadow-lg hover:shadow-[#B065FF]/10 transition-all duration-300"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                whileHover={{ y: -5 }}
+              >
                 <div className="flex items-center justify-center mb-4">
-                  <div className="bg-primary-600 text-white w-12 h-12 rounded-full flex items-center justify-center font-bold mr-3">
+                  <div className="bg-[#B065FF] text-white w-12 h-12 rounded-full flex items-center justify-center font-bold mr-3">
                     {step.step}
                   </div>
                   <div className="text-3xl">{step.icon}</div>
                 </div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-3">{step.title}</h3>
-                <p className="text-gray-600 text-sm">{step.description}</p>
-              </div>
+                <h3 className="text-lg font-semibold text-white mb-3">{step.title}</h3>
+                <p className="text-white/70 text-sm">{step.description}</p>
+              </motion.div>
             ))}
           </div>
         </div>
       </section>
 
       {/* Why Choose Us */}
-      <section className="py-20 bg-primary-600">
+      <section className="py-20 bg-gradient-to-r from-[#B065FF] to-[#6633CC]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
+          <motion.div 
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
             <h2 className="text-3xl lg:text-4xl font-bold text-white mb-4">Why International Clients Choose Verve Apex</h2>
-          </div>
+          </motion.div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="text-center">
-              <div className="text-4xl mb-4">💰</div>
-              <h3 className="text-xl font-semibold text-white mb-3">Cost-Effective Excellence</h3>
-              <p className="text-primary-100">Senior-level expertise at 60-70% less than US/UK agencies, without compromising quality.</p>
-            </div>
-            <div className="text-center">
-              <div className="text-4xl mb-4">🌍</div>
-              <h3 className="text-xl font-semibold text-white mb-3">Global Communication</h3>
-              <p className="text-primary-100">Fluent English, international business experience, and timezone flexibility for seamless collaboration.</p>
-            </div>
-            <div className="text-center">
-              <div className="text-4xl mb-4">🎯</div>
-              <h3 className="text-xl font-semibold text-white mb-3">Startup-Focused</h3>
-              <p className="text-primary-100">Deep understanding of startup challenges, funding cycles, and the need for rapid, strategic development.</p>
-            </div>
+            {[
+              { icon: '💰', title: 'Cost-Effective Excellence', description: 'Senior-level expertise at 60-70% less than US/UK agencies, without compromising quality.' },
+              { icon: '🌍', title: 'Global Communication', description: 'Fluent English, international business experience, and timezone flexibility for seamless collaboration.' },
+              { icon: '🎯', title: 'Startup-Focused', description: 'Deep understanding of startup challenges, funding cycles, and the need for rapid, strategic development.' }
+            ].map((benefit, index) => (
+              <motion.div 
+                key={index}
+                className="text-center"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.2 }}
+              >
+                <div className="text-4xl mb-4">{benefit.icon}</div>
+                <h3 className="text-xl font-semibold text-white mb-3">{benefit.title}</h3>
+                <p className="text-white/90">{benefit.description}</p>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-[#0A0A0A]">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-8">
+          <motion.h2 
+            className="text-3xl lg:text-4xl font-bold text-white mb-8"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
             Ready to Partner with Us?
-          </h2>
-          <p className="text-xl text-gray-600 mb-8">
+          </motion.h2>
+          <motion.p 
+            className="text-xl text-white/70 mb-8"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
             Let's discuss your vision and create a roadmap for bringing your ideas to life.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          </motion.p>
+          <motion.div 
+            className="flex flex-col sm:flex-row gap-4 justify-center"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+          >
             <Link
               to="/contact"
-              className="bg-primary-600 text-white px-8 py-4 rounded-xl text-lg font-semibold hover:bg-primary-700 transition-colors duration-200"
+              className="bg-[#B065FF] text-white px-8 py-4 rounded-xl text-lg font-semibold hover:bg-[#B065FF]/90 transition-all duration-300 hover:shadow-lg hover:shadow-[#B065FF]/20"
             >
               Start the Conversation
             </Link>
             <Link
               to="/portfolio"
-              className="border border-primary-600 text-primary-600 px-8 py-4 rounded-xl text-lg font-semibold hover:bg-primary-50 transition-colors duration-200"
+              className="border border-[#B065FF] text-[#B065FF] px-8 py-4 rounded-xl text-lg font-semibold hover:bg-[#B065FF] hover:text-white transition-all duration-300"
             >
               View Our Work
             </Link>
-          </div>
+          </motion.div>
         </div>
       </section>
     </div>

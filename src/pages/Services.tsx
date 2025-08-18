@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 const Services: React.FC = () => {
   const mvpPackages = [
@@ -101,211 +102,283 @@ const Services: React.FC = () => {
   ];
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-[#0A0A0A]">
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-primary-50 to-blue-50 py-20">
+      <section className="bg-gradient-to-br from-[#0A0A0A] via-[#0F0F0F] to-[#B065FF]/20 py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
-            Your Product Journey, <span className="text-primary-600">Simplified</span>
-          </h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <motion.h1 
+            className="text-4xl lg:text-5xl font-bold text-white mb-6"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            Your Product Journey, <span className="bg-gradient-to-r from-[#B065FF] to-white bg-clip-text text-transparent">Simplified</span>
+          </motion.h1>
+          <motion.p 
+            className="text-xl text-white/70 max-w-3xl mx-auto"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
             We focus on solving a single, core user problem exceptionally well for MVPs, ensuring real user value 
             and avoiding the "hollow MVP" problem. Our agile, client-centric approach puts your success first.
-          </p>
+          </motion.p>
         </div>
       </section>
 
       {/* MVP Development Packages */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-[#0A0A0A]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
-              From Concept to Market: Our Tiered Development Solutions
+          <motion.div 
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <h2 className="text-3xl lg:text-4xl font-bold text-white mb-4">
+              From Concept to Market: Our{' '}
+              <span className="bg-gradient-to-r from-[#B065FF] to-white bg-clip-text text-transparent">
+                Tiered Development Solutions
+              </span>
             </h2>
-          </div>
+          </motion.div>
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             {mvpPackages.map((pkg, index) => (
-              <div key={index} className="bg-white border border-gray-200 rounded-2xl p-8 hover:shadow-xl transition-shadow duration-200">
+              <motion.div 
+                key={index} 
+                className="bg-[#0A0A0A] border border-[#B065FF]/20 rounded-2xl p-8 hover:border-[#B065FF]/40 hover:shadow-lg hover:shadow-[#B065FF]/10 transition-all duration-300"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                whileHover={{ y: -5 }}
+              >
                 <div className="text-center mb-6">
-                  <h3 className="text-2xl font-bold text-gray-900 mb-2">{pkg.title}</h3>
-                  <p className="text-primary-600 font-semibold text-lg">{pkg.price}</p>
+                  <h3 className="text-2xl font-bold text-white mb-2">{pkg.title}</h3>
+                  <p className="text-[#B065FF] font-semibold text-lg">{pkg.price}</p>
                 </div>
                 
                 <div className="mb-6">
-                  <h4 className="font-semibold text-gray-900 mb-2">Goal:</h4>
-                  <p className="text-gray-600 text-sm">{pkg.goal}</p>
+                  <h4 className="font-semibold text-[#B065FF] mb-2">Goal:</h4>
+                  <p className="text-white/70 text-sm">{pkg.goal}</p>
                 </div>
 
                 <div className="mb-6">
-                  <h4 className="font-semibold text-gray-900 mb-2">Features:</h4>
+                  <h4 className="font-semibold text-[#B065FF] mb-2">Features:</h4>
                   <ul className="space-y-2">
                     {pkg.features.map((feature, idx) => (
                       <li key={idx} className="flex items-start">
-                        <span className="text-primary-600 mr-2">✓</span>
-                        <span className="text-gray-600 text-sm">{feature}</span>
+                        <span className="text-[#B065FF] mr-2">✓</span>
+                        <span className="text-white/70 text-sm">{feature}</span>
                       </li>
                     ))}
                   </ul>
                 </div>
 
                 <div className="mb-6">
-                  <h4 className="font-semibold text-gray-900 mb-2">Tech Stack:</h4>
-                  <p className="text-gray-600 text-sm">{pkg.techStack}</p>
+                  <h4 className="font-semibold text-[#B065FF] mb-2">Tech Stack:</h4>
+                  <p className="text-white/70 text-sm">{pkg.techStack}</p>
                 </div>
 
                 <div className="mb-6">
-                  <h4 className="font-semibold text-gray-900 mb-2">Ideal For:</h4>
-                  <p className="text-gray-600 text-sm">{pkg.idealFor}</p>
+                  <h4 className="font-semibold text-[#B065FF] mb-2">Ideal For:</h4>
+                  <p className="text-white/70 text-sm">{pkg.idealFor}</p>
                 </div>
 
                 <Link
                   to="/contact"
-                  className="block w-full text-center bg-primary-600 text-white py-3 rounded-xl font-semibold hover:bg-primary-700 transition-colors duration-200"
+                  className="block w-full text-center bg-gradient-to-r from-[#B065FF] to-[#6633CC] text-white py-3 rounded-xl font-semibold hover:shadow-lg hover:shadow-[#B065FF]/30 transition-all duration-300"
                 >
                   Get Started
                 </Link>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
       </section>
 
       {/* Full-Stack Capabilities */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-20 bg-gradient-to-b from-[#0A0A0A] to-[#0F0F0F]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
-              Mastering Every Layer of Your Digital Product
+          <motion.div 
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <h2 className="text-3xl lg:text-4xl font-bold text-white mb-4">
+              Mastering Every Layer of Your{' '}
+              <span className="bg-gradient-to-r from-[#B065FF] to-white bg-clip-text text-transparent">
+                Digital Product
+              </span>
             </h2>
-          </div>
+          </motion.div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {capabilities.map((capability, index) => (
-              <div key={index} className="bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-200">
+              <motion.div 
+                key={index} 
+                className="bg-[#0A0A0A] border border-[#B065FF]/20 p-6 rounded-2xl hover:border-[#B065FF]/40 hover:shadow-lg hover:shadow-[#B065FF]/10 transition-all duration-300"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                whileHover={{ y: -5 }}
+              >
                 <div className="text-center mb-4">
                   <div className="text-4xl mb-2">{capability.icon}</div>
-                  <h3 className="text-lg font-semibold text-gray-900">{capability.title}</h3>
+                  <h3 className="text-lg font-semibold text-white">{capability.title}</h3>
                 </div>
-                <p className="text-gray-600 text-sm mb-4">{capability.description}</p>
+                <p className="text-white/70 text-sm mb-4">{capability.description}</p>
                 <div className="flex flex-wrap gap-1">
                   {capability.technologies.map((tech, idx) => (
-                    <span key={idx} className="bg-primary-100 text-primary-700 text-xs px-2 py-1 rounded">
+                    <span key={idx} className="bg-[#B065FF]/20 text-[#B065FF] text-xs px-2 py-1 rounded border border-[#B065FF]/30">
                       {tech}
                     </span>
                   ))}
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
         </div>
       </section>
 
       {/* Custom Code vs Low-Code */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-[#0A0A0A]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
-              Build for Tomorrow: Why Custom Code Outperforms Low-Code
+          <motion.div 
+            className="text-center mb-16"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <h2 className="text-3xl lg:text-4xl font-bold text-white mb-4">
+              Build for Tomorrow: Why{' '}
+              <span className="bg-gradient-to-r from-[#B065FF] to-white bg-clip-text text-transparent">
+                Custom Code Outperforms Low-Code
+              </span>
             </h2>
-          </div>
+          </motion.div>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+            >
               <div className="mb-8">
-                <h3 className="text-xl font-semibold text-gray-900 mb-4">The Appeal of Low-Code</h3>
+                <h3 className="text-xl font-semibold text-[#B065FF] mb-4">The Appeal of Low-Code</h3>
                 <ul className="space-y-2">
                   <li className="flex items-start">
                     <span className="text-orange-500 mr-2">⚠️</span>
-                    <span className="text-gray-600">Quick initial setup and speed</span>
+                    <span className="text-white/70">Quick initial setup and speed</span>
                   </li>
                   <li className="flex items-start">
                     <span className="text-orange-500 mr-2">⚠️</span>
-                    <span className="text-gray-600">Lower upfront costs</span>
+                    <span className="text-white/70">Lower upfront costs</span>
                   </li>
                 </ul>
               </div>
               
               <div className="mb-8">
-                <h3 className="text-xl font-semibold text-gray-900 mb-4">Low-Code Limitations</h3>
+                <h3 className="text-xl font-semibold text-[#B065FF] mb-4">Low-Code Limitations</h3>
                 <ul className="space-y-2">
                   <li className="flex items-start">
                     <span className="text-red-500 mr-2">✗</span>
-                    <span className="text-gray-600">Limited customization options</span>
+                    <span className="text-white/70">Limited customization options</span>
                   </li>
                   <li className="flex items-start">
                     <span className="text-red-500 mr-2">✗</span>
-                    <span className="text-gray-600">Vendor lock-in and dependency</span>
+                    <span className="text-white/70">Vendor lock-in and dependency</span>
                   </li>
                   <li className="flex items-start">
                     <span className="text-red-500 mr-2">✗</span>
-                    <span className="text-gray-600">Scalability bottlenecks</span>
+                    <span className="text-white/70">Scalability bottlenecks</span>
                   </li>
                   <li className="flex items-start">
                     <span className="text-red-500 mr-2">✗</span>
-                    <span className="text-gray-600">Security vulnerabilities</span>
+                    <span className="text-white/70">Security vulnerabilities</span>
                   </li>
                   <li className="flex items-start">
                     <span className="text-red-500 mr-2">✗</span>
-                    <span className="text-gray-600">Complex integration challenges</span>
+                    <span className="text-white/70">Complex integration challenges</span>
                   </li>
                 </ul>
               </div>
-            </div>
+            </motion.div>
             
-            <div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-4">The Verve Apex Custom Code Advantage</h3>
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+            >
+              <h3 className="text-xl font-semibold text-[#B065FF] mb-4">The Verve Apex Custom Code Advantage</h3>
               <ul className="space-y-2 mb-8">
                 <li className="flex items-start">
                   <span className="text-green-500 mr-2">✓</span>
-                  <span className="text-gray-600">Complete customization freedom</span>
+                  <span className="text-white/70">Complete customization freedom</span>
                 </li>
                 <li className="flex items-start">
                   <span className="text-green-500 mr-2">✓</span>
-                  <span className="text-gray-600">True scalability for growth</span>
+                  <span className="text-white/70">True scalability for growth</span>
                 </li>
                 <li className="flex items-start">
                   <span className="text-green-500 mr-2">✓</span>
-                  <span className="text-gray-600">Enterprise-grade security</span>
+                  <span className="text-white/70">Enterprise-grade security</span>
                 </li>
                 <li className="flex items-start">
                   <span className="text-green-500 mr-2">✓</span>
-                  <span className="text-gray-600">Seamless third-party integrations</span>
+                  <span className="text-white/70">Seamless third-party integrations</span>
                 </li>
                 <li className="flex items-start">
                   <span className="text-green-500 mr-2">✓</span>
-                  <span className="text-gray-600">Future-proof architecture</span>
+                  <span className="text-white/70">Future-proof architecture</span>
                 </li>
                 <li className="flex items-start">
                   <span className="text-green-500 mr-2">✓</span>
-                  <span className="text-gray-600">No vendor dependencies</span>
+                  <span className="text-white/70">No vendor dependencies</span>
                 </li>
               </ul>
               
-              <div className="bg-primary-50 p-6 rounded-xl">
-                <h4 className="font-semibold text-primary-900 mb-2">Long-term Value</h4>
-                <p className="text-primary-700 text-sm">
+              <div className="bg-[#0A0A0A] border border-[#B065FF]/30 p-6 rounded-xl">
+                <h4 className="font-semibold text-[#B065FF] mb-2">Long-term Value</h4>
+                <p className="text-white/70 text-sm">
                   Our custom-coded solutions provide superior ROI through reduced technical debt, 
                   easier maintenance, and unlimited growth potential.
                 </p>
               </div>
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-primary-600">
+      <section className="py-20 bg-gradient-to-r from-[#B065FF] to-[#6633CC]">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl lg:text-4xl font-bold text-white mb-8">
-            Ready to Build Your Product?
-          </h2>
-          <p className="text-xl text-primary-100 mb-8">
-            Let's discuss your project and create a custom solution that drives real business results.
-          </p>
-          <Link
-            to="/contact"
-            className="inline-block bg-white text-primary-600 px-8 py-4 rounded-xl text-lg font-semibold hover:bg-gray-100 transition-colors duration-200"
+          <motion.h2 
+            className="text-3xl lg:text-4xl font-bold text-white mb-8"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
           >
-            Get a Free Consultation
-          </Link>
+            Ready to Build Your Product?
+          </motion.h2>
+          <motion.p 
+            className="text-xl text-white/90 mb-8"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
+            Let's discuss your project and create a custom solution that drives real business results.
+          </motion.p>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+          >
+            <Link
+              to="/contact"
+              className="inline-block bg-white text-[#B065FF] px-8 py-4 rounded-xl text-lg font-semibold hover:bg-white/90 transition-all duration-300 hover:shadow-lg hover:shadow-white/20"
+            >
+              Get a Free Consultation
+            </Link>
+          </motion.div>
         </div>
       </section>
     </div>
