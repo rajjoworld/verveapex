@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import AnimatedHero from '../components/AnimatedHero';
+import PremiumHero from '../components/PremiumHero';
 
 const Home: React.FC = () => {
   const handleCTAClick = () => {
@@ -78,8 +78,8 @@ const Home: React.FC = () => {
 
   return (
     <div className="min-h-screen">
-      {/* Animated Hero Section */}
-      <AnimatedHero onCTAClick={handleCTAClick} />
+      {/* Premium Extraordinary Hero Section */}
+      <PremiumHero onCTAClick={handleCTAClick} />
 
       {/* Trust Signals */}
       <section className="py-16 bg-white">

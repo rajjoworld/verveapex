@@ -1,5 +1,56 @@
 
-Project Overview & Vision
+# VERVE APEX - AWARD-WINNING WEBSITE INSTRUCTIONS
+
+## 🏆 **VISION: EXTRAORDINARY, NOT ORDINARY**
+**Goal: Create an award-winning, top-class website that stands out with premium animations and unique visual elements**
+
+### 🎯 **ANIMATION INSPIRATION & STANDARDS**
+**Reference Websites:**
+- **Cartier Watches Wonders 2025** (https://www.awwwards.com/sites/cartier-watches-wonders-2025) - Best website UI benchmark
+- **Premium Animation Examples:**
+  - Dribbble Animation 1: https://cdn.dribbble.com/userupload/20585023/file/original-f77ab4e11e45439d6a0c173d8ad2c6cb.mp4
+  - Dribbble Animation 2: https://cdn.dribbble.com/userupload/16274811/file/original-aff53b2977dbf060930dbbd300897d4a.mp4
+  - Dribbble Animation 3: https://cdn.dribbble.com/userupload/43272956/file/original-23d117ac36d9f3921b5c228c5f44937e.mp4
+
+### ✨ **PREMIUM ANIMATION REQUIREMENTS**
+1. **Every Element Must Be Animated**
+   - Scroll-triggered animations
+   - Hover micro-interactions
+   - Loading sequences
+   - Parallax effects
+   - Morphing shapes and objects
+
+2. **Custom Animation Assets**
+   - Lottie animations for complex movements
+   - 3D-rendered objects and scenes
+   - Particle systems and effects
+   - Custom SVG animations
+   - Blender/Cinema 4D style renders
+
+3. **Technical Animation Stack**
+   - Framer Motion for React animations
+   - Lottie React for complex animations
+   - GSAP for timeline animations
+   - Three.js for 3D elements (if needed)
+   - Custom CSS animations for micro-interactions
+
+4. **Animation Sources**
+   - LottieFiles premium animations
+   - Custom AI-generated animations
+   - Gemini Veo for video content
+   - Custom-designed motion graphics
+   - Premium animation libraries
+
+### 🎨 **VISUAL DESIGN STANDARDS**
+- **Color Scheme:** Gradient-heavy, premium feel
+- **Typography:** Bold, modern, animated text effects
+- **Layout:** Asymmetrical, dynamic, flowing
+- **Objects:** Floating, morphing, interactive elements
+- **Backgrounds:** Animated gradients, particle fields, morphing shapes
+
+---
+
+## Project Overview & Vision
 Project Name: Verve Apex Official Website
 
 Purpose: To establish a solid, highly professional, and trustworthy online presence for Verve Apex, a mobile app development agency, designed to attract and convert international clients.
