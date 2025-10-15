@@ -3,10 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@dataconnect/generated": "file:src/dataconnect-generated",
     "@react-spring/web": "^10.0.3",
     "@react-three/fiber": "^9.3.0",
     "@types/react": "^19.1.10",
     "atropos": "^2.0.2",
+    "firebase": "^12.4.0",
     "framer-motion": "^12.23.12",
     "lottie-react": "^2.4.1",
     "lucide-react": "^0.544.0",

@@ -1,5 +1,6 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { Shield, Search, Wrench, FileText, Lock } from 'lucide-react';
 import PremiumHero from '../components/PremiumHero';
 import ProjectsShowcase from '../components/ProjectsShowcase';
 import { trackEvent, trackFormSubmission, trackCTAConversion } from '../services/analytics';
@@ -353,31 +354,94 @@ const Home: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <div className="bg-gradient-to-r from-primary-500/10 to-primary-700/10 border border-primary-500/20 rounded-2xl p-12 max-w-2xl mx-auto">
-              <h2 className="text-3xl font-bold text-primary-400 mb-4">Our Guarantee</h2>
-              <ABText
-                test={AB_TESTS.guarantee_text}
-                defaultText="We'll make it right — free fixes until you're satisfied (terms apply)."
-                className="text-white/90 text-xl mb-6"
-              />
-              <div className="flex flex-wrap justify-center gap-4 text-sm">
-                <span className="px-4 py-2 bg-primary-500/10 border border-primary-500/30 text-primary-400 rounded-full font-medium">
-                  NDA on request
-                </span>
-                <span className="px-4 py-2 bg-primary-500/10 border border-primary-500/30 text-primary-400 rounded-full font-medium">
-                  Code audit available
-                </span>
-                <span className="px-4 py-2 bg-primary-500/10 border border-primary-500/30 text-primary-400 rounded-full font-medium">
-                  1 month free support
-                </span>
+            <div className="bg-gradient-to-r from-primary-500/10 to-primary-700/10 backdrop-blur-xl border border-primary-500/20 rounded-2xl p-16 max-w-4xl mx-auto shadow-2xl shadow-primary-500/10">
+              <motion.div 
+                className="text-center mb-8"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8 }}
+              >
+                <motion.h2 
+                  className="text-4xl font-bold mb-4 bg-gradient-to-r from-emerald-400 to-blue-500 bg-clip-text text-transparent"
+                  animate={{ 
+                    textShadow: [
+                      "0 0 20px rgba(52, 211, 153, 0.5)",
+                      "0 0 30px rgba(59, 130, 246, 0.5)",
+                      "0 0 20px rgba(52, 211, 153, 0.5)"
+                    ]
+                  }}
+                  transition={{ duration: 2, repeat: Infinity }}
+                >
+                  💎 Our Guarantee
+                </motion.h2>
+                <p className="text-white/90 text-xl font-medium mb-2">
+                  We'll make it right. Always.
+                </p>
+                <p className="text-white/70 text-lg">
+                  Unlimited free fixes until you're fully satisfied. (Fair-use terms apply.)
+                </p>
+              </motion.div>
+
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                <motion.div 
+                  className="bg-white/5 backdrop-blur-sm border border-primary-500/30 rounded-xl p-6 text-center hover:bg-white/10 transition-all duration-300 shadow-lg shadow-primary-500/20 hover:shadow-primary-500/40"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.1 }}
+                  whileHover={{ scale: 1.05 }}
+                >
+                  <FileText className="w-8 h-8 text-emerald-400 mx-auto mb-3" />
+                  <h3 className="text-white font-semibold text-lg mb-2">NDA on Request</h3>
+                  <p className="text-white/70 text-sm">Your ideas stay protected</p>
+                </motion.div>
+
+                <motion.div 
+                  className="bg-white/5 backdrop-blur-sm border border-primary-500/30 rounded-xl p-6 text-center hover:bg-white/10 transition-all duration-300 shadow-lg shadow-blue-500/20 hover:shadow-blue-500/40"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.2 }}
+                  whileHover={{ scale: 1.05 }}
+                >
+                  <Search className="w-8 h-8 text-blue-400 mx-auto mb-3" />
+                  <h3 className="text-white font-semibold text-lg mb-2">Code Audit Available</h3>
+                  <p className="text-white/70 text-sm">Deep technical review included</p>
+                </motion.div>
+
+                <motion.div 
+                  className="bg-white/5 backdrop-blur-sm border border-primary-500/30 rounded-xl p-6 text-center hover:bg-white/10 transition-all duration-300 shadow-lg shadow-purple-500/20 hover:shadow-purple-500/40"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.3 }}
+                  whileHover={{ scale: 1.05 }}
+                >
+                  <Wrench className="w-8 h-8 text-purple-400 mx-auto mb-3" />
+                  <h3 className="text-white font-semibold text-lg mb-2">1-Month Free Support</h3>
+                  <p className="text-white/70 text-sm">Post-launch assistance included</p>
+                </motion.div>
               </div>
+
+              <motion.div 
+                className="text-center"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+              >
+                <div className="flex justify-center items-center gap-4 mb-4">
+                  <Shield className="w-6 h-6 text-emerald-400" />
+                  <Lock className="w-6 h-6 text-blue-400" />
+                  <FileText className="w-6 h-6 text-purple-400" />
+                </div>
+                <p className="text-white/80 text-lg font-medium">
+                  Our Promise: Zero surprises, zero excuses — just results and accountability.
+                </p>
+              </motion.div>
             </div>
           </motion.div>
         </div>
       </section>
 
-      {/* Exit Intent Popup */}
-      <ExitIntentPopup />
+      {/* Exit Intent Popup - Temporarily disabled */}
+      {/* <ExitIntentPopup /> */}
     </div>
   );
 };
