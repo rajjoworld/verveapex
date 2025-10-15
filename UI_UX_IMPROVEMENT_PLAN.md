@@ -41,7 +41,6 @@ This document outlines strategic improvements for the Verve Apex website to incr
 From wireframe to live users — premium builds at founder-friendly prices.  
 Expert team. Fast start. 24-hour response.
 
-**Featured outcome:** First demo in 2 weeks • Project delivered with demo, handoff docs & 1 month free support.
 
 [Get Free Consultation — + Custom Roadmap]  [Schedule a Free Call]
 ```
