@@ -1,26 +1,72 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import PremiumHero from '../components/PremiumHero';
 import ProjectsShowcase from '../components/ProjectsShowcase';
-import { trackEvent } from '../services/analytics';
+import { trackEvent, trackFormSubmission, trackCTAConversion } from '../services/analytics';
 import SEO from '../components/SEO';
 import UltimateHowWeWork from '../components/UltimateHowWeWork';
+import TeamSection from '../components/TeamSection';
+import FAQ from '../components/FAQ';
+import ExitIntentPopup from '../components/ExitIntentPopup';
 import { submitContactForm } from '../services/email';
 import { getStoredUtm } from '../utils/utm';
+import { useBehaviorTracking } from '../hooks/useBehaviorTracking';
+import { ABText } from '../components/ABTestComponent';
+import { AB_TESTS } from '../utils/abTesting';
 
 const Home: React.FC = () => {
   const bookRef = useRef<HTMLDivElement | null>(null);
+
+  // Initialize behavior tracking
+  useBehaviorTracking({
+    trackClicks: true,
+    trackMouseMovement: true,
+    trackFormInteractions: true,
+    trackTimeOnPage: true,
+    pageName: 'home'
+  });
 
   // Form state
   const [fullName, setFullName] = useState('');
   const [email, setEmail] = useState('');
   const [company, setCompany] = useState('');
+  const [projectType, setProjectType] = useState('');
+  const [budgetRange, setBudgetRange] = useState('');
+  const [timeline, setTimeline] = useState('');
   const [vision, setVision] = useState('');
+  const [file, setFile] = useState<File | null>(null);
   const [submitting, setSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<{ ok: boolean; message: string } | null>(null);
 
   // Form validation
   const canSubmit = fullName.trim().length > 0 && email.trim().length > 0 && !submitting;
+
+  // Scroll depth tracking
+  useEffect(() => {
+    let lastScrollDepth = 0;
+    const trackScrollDepth = () => {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const scrollPercent = Math.round((scrollTop / docHeight) * 100);
+
+      // Track milestones: 25%, 50%, 75%, 90%
+      const milestones = [25, 50, 75, 90];
+      milestones.forEach(milestone => {
+        if (scrollPercent >= milestone && lastScrollDepth < milestone) {
+          trackEvent('scroll_depth', {
+            scroll_percentage: milestone,
+            event_category: 'engagement',
+            event_label: `${milestone}%_scrolled`
+          });
+        }
+      });
+
+      lastScrollDepth = scrollPercent;
+    };
+
+    window.addEventListener('scroll', trackScrollDepth);
+    return () => window.removeEventListener('scroll', trackScrollDepth);
+  }, []);
 
   // Scroll to contact form
   const scrollToContact = () => {
@@ -40,19 +86,32 @@ const Home: React.FC = () => {
     setSubmitStatus(null);
     const utm = getStoredUtm();
     const message = vision.trim() ? vision.trim() : `Quick contact request from homepage.\n\nUTM: ${JSON.stringify(utm)}`;
-    trackEvent('contact_submit_attempt', { location: 'home_contact_simple' });
+    trackFormSubmission('contact_form', {
+      project_type: projectType,
+      budget_range: budgetRange,
+      timeline: timeline,
+      has_file: !!file
+    });
     const result = await submitContactForm({
       fullName: fullName.trim(),
       email: email.trim(),
       company: company.trim(),
+      projectType: projectType,
+      budgetRange: budgetRange,
+      timeline: timeline,
       message,
+      file: file || undefined,
     });
     if (result.ok) {
       setSubmitStatus({ ok: true, message: 'Thanks! We\'ll get back to you within 24 hours. For urgent inquiries, email contact@verveapex.com.' });
       setFullName('');
       setEmail('');
       setCompany('');
+      setProjectType('');
+      setBudgetRange('');
+      setTimeline('');
       setVision('');
+      setFile(null);
       trackEvent('contact_submit_success', { location: 'home_contact_simple' });
     } else {
       setSubmitStatus({ ok: false, message: 'Please email us directly at contact@verveapex.com with your project details.' });
@@ -73,10 +132,16 @@ const Home: React.FC = () => {
       <PremiumHero onCTAClick={scrollToContact} />
 
       {/* Projects Showcase */}
-      <ProjectsShowcase />
+      <ProjectsShowcase onCTAClick={scrollToContact} />
 
       {/* How We Work */}
       <UltimateHowWeWork />
+
+      {/* Team Section */}
+      <TeamSection />
+
+      {/* FAQ Section */}
+      <FAQ onCTAClick={scrollToContact} />
 
       {/* Contact Form Section */}
       <section id="book-a-call" ref={bookRef} className="py-20 bg-[#0A0A0A]">
@@ -91,7 +156,7 @@ const Home: React.FC = () => {
               Ready to Build Your Vision?
             </h2>
             <p className="text-xl text-white/70 max-w-2xl mx-auto">
-              Tell us about your project and we'll respond within 24 hours with a tailored approach.
+              Share your idea and get a tailored project plan — free, no commitment. Attach your deck for the fastest response. Limited early partner slots available.
             </p>
           </motion.div>
 
@@ -149,6 +214,63 @@ const Home: React.FC = () => {
               />
             </div>
 
+            {/* Project Type Field */}
+            <div>
+              <label htmlFor="projectType" className="block text-sm font-medium text-white mb-2">
+                Project Type
+              </label>
+              <select
+                id="projectType"
+                value={projectType}
+                onChange={(e) => setProjectType(e.target.value)}
+                className="w-full px-4 py-3 bg-[#0A0A0A] border border-primary-500/30 text-white rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors"
+              >
+                <option value="">Select project type</option>
+                <option value="MVP">MVP</option>
+                <option value="Iteration">Iteration</option>
+                <option value="Audit">Audit</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+
+            {/* Budget Range Field */}
+            <div>
+              <label htmlFor="budgetRange" className="block text-sm font-medium text-white mb-2">
+                Budget Range
+              </label>
+              <select
+                id="budgetRange"
+                value={budgetRange}
+                onChange={(e) => setBudgetRange(e.target.value)}
+                className="w-full px-4 py-3 bg-[#0A0A0A] border border-primary-500/30 text-white rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors"
+              >
+                <option value="">Select budget range</option>
+                <option value="$10k - $25k">$10k - $25k</option>
+                <option value="$25k - $50k">$25k - $50k</option>
+                <option value="$50k - $100k">$50k - $100k</option>
+                <option value="$100k+">$100k+</option>
+              </select>
+            </div>
+
+            {/* Timeline Field */}
+            <div>
+              <label htmlFor="timeline" className="block text-sm font-medium text-white mb-2">
+                Timeline
+              </label>
+              <select
+                id="timeline"
+                value={timeline}
+                onChange={(e) => setTimeline(e.target.value)}
+                className="w-full px-4 py-3 bg-[#0A0A0A] border border-primary-500/30 text-white rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors"
+              >
+                <option value="">Select timeline</option>
+                <option value="1-2 months">1-2 months</option>
+                <option value="3-6 months">3-6 months</option>
+                <option value="6+ months">6+ months</option>
+                <option value="ASAP">ASAP</option>
+              </select>
+            </div>
+
             {/* Vision Field */}
             <div>
               <label htmlFor="vision" className="block text-sm font-medium text-white mb-2">
@@ -164,14 +286,39 @@ const Home: React.FC = () => {
               />
             </div>
 
+            {/* File Upload Field */}
+            <div>
+              <label htmlFor="file" className="block text-sm font-medium text-white mb-2">
+                Attach deck / spec <span className="text-white/50">(Optional, max 25MB)</span>
+              </label>
+              <input
+                type="file"
+                id="file"
+                accept=".pdf,.pptx,.docx,.zip"
+                onChange={(e) => setFile(e.target.files?.[0] || null)}
+                className="w-full px-4 py-3 bg-[#0A0A0A] border border-primary-500/30 text-white rounded-xl focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-primary-500 file:text-white hover:file:bg-primary-600"
+              />
+            </div>
+
             <div className="flex flex-col sm:flex-row items-center gap-4">
               <button
                 type="submit"
                 disabled={!canSubmit || submitting}
                 className="inline-flex items-center justify-center rounded-xl bg-gradient-to-r from-primary-500 to-primary-700 text-white px-6 py-3 font-semibold disabled:opacity-50 disabled:cursor-not-allowed hover:shadow-lg hover:shadow-primary-500/30 transition-all duration-300"
-                onClick={() => trackEvent('book_call_click', { location: 'home_contact_simple_button' })}
+                onClick={() => trackCTAConversion('contact_form_submit', 'Send Message — Get Custom Plan', 'contact_section')}
               >
-                {submitting ? 'Sending…' : 'Send Message'}
+                {submitting ? 'Sending…' : 'Send Message — Get Custom Plan'}
+              </button>
+              <button
+                type="button"
+                className="inline-flex items-center justify-center rounded-xl border border-primary-500/50 text-primary-400 px-6 py-3 font-semibold hover:bg-primary-500/10 transition-colors"
+                onClick={() => {
+                  trackCTAConversion('schedule_call', 'Schedule a Free Call', 'contact_section');
+                  // Already in contact form, maybe scroll to top of form or just track
+                  bookRef.current?.scrollIntoView({ behavior: 'smooth' });
+                }}
+              >
+                Schedule a Free Call
               </button>
               {submitStatus && (
                 <span className={`${submitStatus.ok ? 'text-emerald-400' : 'text-red-400'} text-sm`}>
@@ -196,6 +343,41 @@ const Home: React.FC = () => {
           </div>
         </div>
       </section>
+
+      {/* Guarantee Section */}
+      <section className="py-20 bg-[#0A0A0A]">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            className="text-center"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <div className="bg-gradient-to-r from-primary-500/10 to-primary-700/10 border border-primary-500/20 rounded-2xl p-12 max-w-2xl mx-auto">
+              <h2 className="text-3xl font-bold text-primary-400 mb-4">Our Guarantee</h2>
+              <ABText
+                test={AB_TESTS.guarantee_text}
+                defaultText="We'll make it right — free fixes until you're satisfied (terms apply)."
+                className="text-white/90 text-xl mb-6"
+              />
+              <div className="flex flex-wrap justify-center gap-4 text-sm">
+                <span className="px-4 py-2 bg-primary-500/10 border border-primary-500/30 text-primary-400 rounded-full font-medium">
+                  NDA on request
+                </span>
+                <span className="px-4 py-2 bg-primary-500/10 border border-primary-500/30 text-primary-400 rounded-full font-medium">
+                  Code audit available
+                </span>
+                <span className="px-4 py-2 bg-primary-500/10 border border-primary-500/30 text-primary-400 rounded-full font-medium">
+                  1 month free support
+                </span>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Exit Intent Popup */}
+      <ExitIntentPopup />
     </div>
   );
 };

@@ -1,5 +1,8 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { motion, useScroll, useTransform, useInView, Variants, useSpring } from 'framer-motion';
+import { trackCTAConversion } from '../services/analytics';
+import { ABButton, ABText } from './ABTestComponent';
+import { AB_TESTS } from '../utils/abTesting';
 
 interface PremiumHeroProps {
   onCTAClick: () => void;
@@ -385,10 +388,7 @@ const PremiumHero: React.FC<PremiumHeroProps> = ({ onCTAClick }) => {
                 }}
               />
               <span className="text-primary-400 text-sm font-medium">
-                🚀 New Startup • Seeking First Clients
-              </span>
-              <span className="text-white/70 text-sm">
-                • Competitive Rates • Dedicated Service
+                🚀 Early Partner Advantage • Startup Rates • Full Product Team
               </span>
             </motion.div>
           </motion.div>
@@ -410,7 +410,7 @@ const PremiumHero: React.FC<PremiumHeroProps> = ({ onCTAClick }) => {
                   animate={isInView ? { y: 0, opacity: 1 } : {}}
                   transition={{ duration: 1.2, delay: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
                 >
-                  Your Vision.
+                  Launch Your Vision.
                 </motion.span>
               </motion.div>
               <motion.div className="overflow-hidden relative">
@@ -433,7 +433,7 @@ const PremiumHero: React.FC<PremiumHeroProps> = ({ onCTAClick }) => {
                       ease: "linear"
                     }}
                   >
-                    Launched.
+                    Win Early.
                   </motion.span>
                 </motion.span>
                 {/* Enhanced Luminous Glow Effect */}
@@ -457,7 +457,7 @@ const PremiumHero: React.FC<PremiumHeroProps> = ({ onCTAClick }) => {
                   animate={isInView ? { y: 0, opacity: 1 } : {}}
                   transition={{ duration: 1.2, delay: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
                 >
-                  Globally.
+                  Scale Globally.
                 </motion.span>
               </motion.div>
             </motion.h1>
@@ -478,68 +478,46 @@ const PremiumHero: React.FC<PremiumHeroProps> = ({ onCTAClick }) => {
               <motion.p 
                 className="text-xl sm:text-2xl lg:text-3xl text-white/90 font-medium leading-relaxed mb-8"
               >
-                Complete Product Team • From Scratch to Scale •{" "}
-                <motion.span 
-                  className="bg-gradient-to-r from-primary-500 via-white to-primary-700 bg-clip-text text-transparent font-semibold"
-                  style={{ backgroundSize: "200% 200%" }}
-                  animate={{
-                    backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
-                  }}
-                  transition={{
-                    duration: 4,
-                    repeat: Infinity,
-                    ease: "linear"
-                  }}
-                >
-                  Affordable Excellence
-                </motion.span>
+                From wireframe to live users — premium builds at founder-friendly prices.  
+                Expert team. Fast start. 24-hour response.
               </motion.p>
-              <motion.p 
-                className="text-lg sm:text-xl text-white/70 leading-relaxed"
-              >
-                We're building Verve Apex from the ground up and actively seeking our first clients. 
-                Get premium development service at startup-friendly rates as we grow together.
-              </motion.p>
+              <ABText
+                test={AB_TESTS.hero_subtitle}
+                defaultText="**Featured outcome:** First demo in 2 weeks • Project delivered with demo, handoff docs & 1 month free support."
+                className="text-lg sm:text-xl text-white/70 leading-relaxed mb-8 font-semibold"
+              />
             </motion.div>
           </motion.div>
 
           {/* High-Converting CTA Section */}
-          <motion.div 
+          <motion.div
             className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-20"
             initial={{ opacity: 0, y: 40 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 1.2, delay: 1.4 }}
           >
+            <ABButton
+              test={AB_TESTS.hero_cta}
+              defaultText="Get Free Consultation — + Custom Roadmap"
+              defaultVariant="primary"
+              onConversion={(variantId, type) => {
+                if (type === 'button_click') {
+                  onCTAClick();
+                }
+              }}
+            />
             <motion.button
-              onClick={onCTAClick}
-              className="group relative px-12 py-5 bg-gradient-to-r from-primary-500 via-primary-600 to-primary-700 text-white font-semibold text-lg rounded-xl overflow-hidden"
+              onClick={() => {
+                trackCTAConversion('hero_secondary', 'Schedule a Free Call', 'hero');
+                onCTAClick();
+              }}
+              className="group relative px-12 py-5 border border-primary-500/50 text-primary-400 font-semibold text-lg rounded-xl overflow-hidden hover:bg-primary-500/10 transition-colors"
               whileHover={{ scale: 1.05, y: -3 }}
               whileTap={{ scale: 0.95 }}
               transition={{ type: "spring", stiffness: 400, damping: 10 }}
-              style={{
-                boxShadow: "0 15px 35px rgba(90, 46, 138, 0.4)"
-              }}
             >
-              <motion.div
-                className="absolute inset-0 bg-gradient-to-r from-primary-700 via-primary-500 to-primary-700"
-                initial={{ x: "-100%" }}
-                whileHover={{ x: "0%" }}
-                transition={{ duration: 0.5, ease: "easeOut" }}
-              />
               <span className="relative z-10 flex items-center gap-3">
-                Get Free Consultation
-                <motion.div
-                  className="w-2 h-2 bg-white rounded-full"
-                  animate={{
-                    scale: [1, 1.5, 1],
-                    opacity: [1, 0.6, 1],
-                  }}
-                  transition={{
-                    duration: 2,
-                    repeat: Infinity,
-                    ease: "easeInOut"
-                  }}
-                />
+                Schedule a Free Call
               </span>
             </motion.button>
           </motion.div>

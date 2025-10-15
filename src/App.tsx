@@ -6,6 +6,7 @@ import Home from './pages/Home';
 import Contact from './pages/Contact';
 import Privacy from './pages/Privacy';
 import Terms from './pages/Terms';
+import { OutreachDashboard } from './components/OutreachDashboard';
 import { initAnalytics, trackPageView } from './services/analytics';
 import { parseUtmFromUrl, storeUtm } from './utils/utm';
 import NotFound from './pages/NotFound';
@@ -44,6 +45,7 @@ function App() {
             <Route path="/contact" element={<Contact />} />
             <Route path="/privacy" element={<Privacy />} />
             <Route path="/terms" element={<Terms />} />
+            <Route path="/outreach" element={<OutreachDashboard />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </main>

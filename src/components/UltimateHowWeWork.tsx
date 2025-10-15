@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { motion, useInView, useScroll, useTransform } from 'framer-motion';
 import { useSpring, animated } from '@react-spring/web';
+import Atropos from 'atropos/react';
 import Lottie from 'lottie-react';
 import { 
   MessageCircle, 
@@ -22,7 +23,7 @@ const steps = [
   {
     id: 1,
     title: 'Discovery (Free Call)',
-    desc: 'We understand your goals, constraints, and success criteria. Expect clear notes and next steps within 24 hours.',
+    desc: 'Clear notes, success criteria, and next steps within 24 hours.',
     icon: MessageCircle,
     lottieAnimation: discoveryAnimation,
     color: '#00D4FF',
@@ -32,7 +33,7 @@ const steps = [
   {
     id: 2,
     title: 'Scope & Proposal',
-    desc: 'Lean scope with must-haves vs nice-to-haves, timeline options, and transparent pricing. No fluff.',
+    desc: 'Must-haves vs nice-to-haves, timeline options, and transparent pricing.',
     icon: FileText,
     lottieAnimation: proposalAnimation,
     color: '#7C3AED',
@@ -42,7 +43,7 @@ const steps = [
   {
     id: 3,
     title: 'Design & Plan',
-    desc: 'We translate goals into user flows and tickets. You review the plan before we write code.',
+    desc: 'Clickable prototypes, user flows, and ticketed backlog for your review.',
     icon: Palette,
     lottieAnimation: designAnimation,
     color: '#F59E0B',
@@ -52,7 +53,7 @@ const steps = [
   {
     id: 4,
     title: 'Build in Iterations',
-    desc: 'Weekly demos, honest status, and fast adjustments. We ship value early and often.',
+    desc: 'Weekly demos, quick feedback loops, and tangible deliverables.',
     icon: Code,
     lottieAnimation: developmentAnimation,
     color: '#10B981',
@@ -62,7 +63,7 @@ const steps = [
   {
     id: 5,
     title: 'Launch & Support',
-    desc: 'Staging → Production with a checklist. Post-launch monitoring and a clear support path.',
+    desc: 'Staging → Production checklist, monitoring, and post-launch playbook.',
     icon: Rocket,
     lottieAnimation: launchAnimation,
     color: '#EF4444',
@@ -79,11 +80,6 @@ const CleanStepCard: React.FC<{
 }> = ({ step, index, isActive }) => {
   const [isHovered, setIsHovered] = useState(false);
   
-  const cardSpring = useSpring({
-    transform: isHovered ? 'scale(1.02)' : 'scale(1)',
-    config: { tension: 300, friction: 10 }
-  });
-
   const progressSpring = useSpring({
     width: isActive ? '100%' : '0%',
     config: { tension: 200, friction: 25 }
@@ -97,8 +93,6 @@ const CleanStepCard: React.FC<{
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6, delay: index * 0.1 }}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
     >
       {/* Connection Line */}
       {index < steps.length - 1 && (
@@ -110,12 +104,11 @@ const CleanStepCard: React.FC<{
         </div>
       )}
 
-      <animated.div
-        style={cardSpring}
-        className="relative bg-gradient-to-br from-gray-900/50 to-gray-800/50 
-                   border border-gray-700/50 rounded-2xl p-6 backdrop-blur-sm
-                   hover:border-primary-500/50 transition-all duration-300
-                   min-h-[280px]"
+      <Atropos
+        className="relative"
+        data-atropos-offset="5"
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
       >
         {/* Step Number Badge */}
         <motion.div 
@@ -123,63 +116,72 @@ const CleanStepCard: React.FC<{
                      flex items-center justify-center text-white font-bold text-sm shadow-lg z-20`}
           whileHover={{ scale: 1.1 }}
           transition={{ duration: 0.2 }}
+          data-atropos-offset="8"
         >
           {index + 1}
         </motion.div>
 
         {/* Tag */}
-        <div className="absolute -top-2 right-4 z-20">
+        <div className="absolute -top-2 right-4 z-20" data-atropos-offset="6">
           <span className={`px-2 py-1 text-xs font-semibold bg-gradient-to-r ${step.gradient} 
                           text-white rounded-full shadow-lg`}>
             {step.tag}
           </span>
         </div>
 
-        {/* Icon with Lottie Animation */}
-        <motion.div 
-          className="mb-4 relative z-10"
-          whileHover={{ scale: 1.05 }}
-          transition={{ duration: 0.3 }}
+        <div
+          className="relative bg-black/20 backdrop-blur-xl border border-gray-700/50 rounded-2xl p-6 backdrop-blur-sm hover:border-primary-500/50 transition-all duration-500 hover:bg-black/30 hover:shadow-2xl hover:shadow-black/50 min-h-[280px] bg-gradient-to-br from-black/20 to-black/10"
+          data-atropos-offset="0"
         >
-          <div className={`w-16 h-16 rounded-xl bg-gradient-to-r ${step.gradient} 
-                          flex items-center justify-center mb-4 relative overflow-hidden`}>
-            {/* Fallback Icon */}
-            <IconComponent className="w-8 h-8 text-white absolute inset-0 m-auto" />
-            
-            {/* Lottie Animation Overlay */}
-            <div className="absolute inset-0 flex items-center justify-center">
-              <Lottie
-                animationData={step.lottieAnimation}
-                className="w-12 h-12"
-                loop
-                autoplay={isHovered}
+          {/* Floating orb */}
+          <div className="absolute -top-10 -right-10 w-32 h-32 rounded-full bg-white/10 blur-xl group-hover:blur-2xl transition-all" data-atropos-offset="2" />
+          {/* Icon with Lottie Animation */}
+          <motion.div 
+            className="mb-4 relative z-10"
+            whileHover={{ scale: 1.05 }}
+            transition={{ duration: 0.3 }}
+            data-atropos-offset="4"
+          >
+            <div className={`w-16 h-16 rounded-xl bg-gradient-to-r ${step.gradient} 
+                            flex items-center justify-center mb-4 relative overflow-hidden`}>
+              {/* Fallback Icon */}
+              <IconComponent className="w-8 h-8 text-white absolute inset-0 m-auto" />
+              
+              {/* Lottie Animation Overlay */}
+              <div className="absolute inset-0 flex items-center justify-center">
+                <Lottie
+                  animationData={step.lottieAnimation}
+                  className="w-12 h-12"
+                  loop
+                  autoplay={isHovered}
+                />
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Content */}
+          <div className="space-y-3 relative z-10" data-atropos-offset="2">
+            <h3 className="text-lg font-semibold text-white">
+              {step.title}
+            </h3>
+            <p className="text-gray-300 text-sm leading-relaxed">
+              {step.desc}
+            </p>
+          </div>
+
+          {/* Progress Indicator */}
+          <div className="mt-4 relative z-10" data-atropos-offset="1">
+            <div className="h-1 bg-gray-700 rounded-full overflow-hidden">
+              <motion.div 
+                className={`h-full bg-gradient-to-r ${step.gradient}`}
+                initial={{ width: 0 }}
+                animate={{ width: isActive ? '100%' : '0%' }}
+                transition={{ duration: 0.8, delay: index * 0.1 }}
               />
             </div>
           </div>
-        </motion.div>
-
-        {/* Content */}
-        <div className="space-y-3 relative z-10">
-          <h3 className="text-lg font-semibold text-white">
-            {step.title}
-          </h3>
-          <p className="text-gray-300 text-sm leading-relaxed">
-            {step.desc}
-          </p>
         </div>
-
-        {/* Progress Indicator */}
-        <div className="mt-4 relative z-10">
-          <div className="h-1 bg-gray-700 rounded-full overflow-hidden">
-            <motion.div 
-              className={`h-full bg-gradient-to-r ${step.gradient}`}
-              initial={{ width: 0 }}
-              animate={{ width: isActive ? '100%' : '0%' }}
-              transition={{ duration: 0.8, delay: index * 0.1 }}
-            />
-          </div>
-        </div>
-      </animated.div>
+      </Atropos>
     </motion.div>
   );
 };
@@ -220,11 +222,10 @@ const CleanHowWeWork: React.FC = () => {
           
           <h2 className="text-4xl lg:text-6xl font-bold text-white mb-6 bg-gradient-to-r 
                          from-white to-gray-400 bg-clip-text text-transparent">
-            How We Work
+            How We Work — Simple, Transparent, Founder-Focused
           </h2>
           <p className="text-gray-400 max-w-3xl mx-auto text-lg leading-relaxed">
-            A simple, honest process that keeps momentum and clarity. Every step designed 
-            to minimize risk and maximize value delivery.
+            A lean process built to keep momentum and remove surprises.
           </p>
         </motion.div>
 
@@ -239,6 +240,19 @@ const CleanHowWeWork: React.FC = () => {
             />
           ))}
         </div>
+
+        {/* Our Promise */}
+        <motion.div
+          className="mt-16 text-center"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.5 }}
+        >
+          <h3 className="text-2xl font-bold text-white mb-4">Our Promise</h3>
+          <p className="text-gray-300 text-lg mb-8">
+            No unexpected delays. NDA on request. Founder support for investor pitches & early user outreach.
+          </p>
+        </motion.div>
       </div>
     </section>
   );

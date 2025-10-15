@@ -4,7 +4,11 @@ export type ContactPayload = {
   fullName: string;
   email: string;
   company?: string;
+  projectType?: string;
+  budgetRange?: string;
+  timeline?: string;
   message: string;
+  file?: File;
 };
 
 export type EmailResult = { ok: true } | { ok: false; error: string };
@@ -16,6 +20,7 @@ export async function submitContactForm(payload: ContactPayload): Promise<EmailR
     // Log the submission for manual processing
     console.log('Form Submission (No endpoint configured):', {
       ...payload,
+      fileName: payload.file?.name,
       timestamp: new Date().toISOString()
     });
     
@@ -24,13 +29,19 @@ export async function submitContactForm(payload: ContactPayload): Promise<EmailR
   }
   
   try {
+    const formData = new FormData();
+    formData.append('fullName', payload.fullName);
+    formData.append('email', payload.email);
+    if (payload.company) formData.append('company', payload.company);
+    if (payload.projectType) formData.append('projectType', payload.projectType);
+    if (payload.budgetRange) formData.append('budgetRange', payload.budgetRange);
+    if (payload.timeline) formData.append('timeline', payload.timeline);
+    formData.append('message', payload.message);
+    if (payload.file) formData.append('file', payload.file);
+    
     const res = await fetch(env.formsEndpoint, {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json',
-      },
-      body: JSON.stringify(payload),
+      body: formData,
     });
     
     if (!res.ok) {
