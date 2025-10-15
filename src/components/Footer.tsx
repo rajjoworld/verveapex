@@ -1,17 +1,18 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import { trackEvent } from '../services/analytics';
 
 const Footer: React.FC = () => {
   return (
-    <footer className="bg-[#0A0A0A] text-white border-t border-[#B065FF]/20">
+  <footer className="bg-[#0A0A0A] text-white border-t border-primary-500/20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Company Info */}
           <div className="md:col-span-2">
             <Link to="/" className="flex items-center mb-4">
               <motion.span 
-                className="text-2xl font-bold bg-gradient-to-r from-[#B065FF] to-white bg-clip-text text-transparent"
+                className="text-2xl font-bold bg-gradient-to-r from-primary-500 to-white bg-clip-text text-transparent"
                 whileHover={{ scale: 1.05 }}
                 transition={{ duration: 0.2 }}
               >
@@ -25,7 +26,7 @@ const Footer: React.FC = () => {
             <div className="flex space-x-4">
               <motion.a 
                 href="https://linkedin.com/company/verveapex" 
-                className="text-white/60 hover:text-[#B065FF] transition-colors" 
+                className="text-white/60 hover:text-primary-400 transition-colors" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 whileHover={{ y: -2, scale: 1.1 }}
@@ -38,7 +39,7 @@ const Footer: React.FC = () => {
               </motion.a>
               <motion.a 
                 href="https://twitter.com/verveapex" 
-                className="text-white/60 hover:text-[#B065FF] transition-colors" 
+                className="text-white/60 hover:text-primary-400 transition-colors" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 whileHover={{ y: -2, scale: 1.1 }}
@@ -51,7 +52,7 @@ const Footer: React.FC = () => {
               </motion.a>
               <motion.a 
                 href="https://github.com/verveapex" 
-                className="text-white/60 hover:text-[#B065FF] transition-colors" 
+                className="text-white/60 hover:text-primary-400 transition-colors" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 whileHover={{ y: -2, scale: 1.1 }}
@@ -67,29 +68,20 @@ const Footer: React.FC = () => {
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-lg font-semibold mb-4 text-[#B065FF]">Quick Links</h3>
+            <h3 className="text-lg font-semibold mb-4 text-primary-400">Quick Links</h3>
             <ul className="space-y-2">
               <motion.li whileHover={{ x: 5 }}>
-                <Link to="/services" className="text-white/70 hover:text-[#B065FF] transition-colors">Services</Link>
-              </motion.li>
-              <motion.li whileHover={{ x: 5 }}>
-                <Link to="/portfolio" className="text-white/70 hover:text-[#B065FF] transition-colors">Portfolio</Link>
-              </motion.li>
-              <motion.li whileHover={{ x: 5 }}>
-                <Link to="/about" className="text-white/70 hover:text-[#B065FF] transition-colors">About Us</Link>
-              </motion.li>
-              <motion.li whileHover={{ x: 5 }}>
-                <Link to="/contact" className="text-white/70 hover:text-[#B065FF] transition-colors">Contact</Link>
+                <Link to="/#book-a-call" className="text-white/70 hover:text-primary-400 transition-colors" onClick={() => trackEvent('book_call_click', { location: 'footer' })}>Book a Call</Link>
               </motion.li>
             </ul>
           </div>
 
           {/* Contact Info */}
           <div>
-            <h3 className="text-lg font-semibold mb-4 text-[#B065FF]">Contact</h3>
+            <h3 className="text-lg font-semibold mb-4 text-primary-400">Contact</h3>
             <ul className="space-y-2 text-white/70">
               <motion.li whileHover={{ x: 5 }}>
-                <span className="hover:text-[#B065FF] transition-colors cursor-pointer">contact@verveapex.com</span>
+                <span className="hover:text-primary-400 transition-colors cursor-pointer">contact@verveapex.com</span>
               </motion.li>
               <li>Based in India, serving clients globally</li>
               <li>Response within 24 hours</li>
@@ -98,7 +90,7 @@ const Footer: React.FC = () => {
         </div>
 
         <motion.div 
-          className="mt-8 pt-8 border-t border-[#B065FF]/20 flex flex-col md:flex-row justify-between items-center"
+          className="mt-8 pt-8 border-t border-primary-500/20 flex flex-col md:flex-row justify-between items-center"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
@@ -108,10 +100,10 @@ const Footer: React.FC = () => {
           </p>
           <div className="flex space-x-6 mt-4 md:mt-0">
             <motion.div whileHover={{ y: -2 }}>
-              <Link to="/privacy" className="text-white/60 hover:text-[#B065FF] text-sm transition-colors">Privacy Policy</Link>
+              <Link to="/privacy" className="text-white/60 hover:text-primary-400 text-sm transition-colors">Privacy Policy</Link>
             </motion.div>
             <motion.div whileHover={{ y: -2 }}>
-              <Link to="/terms" className="text-white/60 hover:text-[#B065FF] text-sm transition-colors">Terms of Service</Link>
+              <Link to="/terms" className="text-white/60 hover:text-primary-400 text-sm transition-colors">Terms of Service</Link>
             </motion.div>
           </div>
         </motion.div>

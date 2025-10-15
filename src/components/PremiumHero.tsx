@@ -36,7 +36,6 @@ const PremiumHero: React.FC<PremiumHeroProps> = ({ onCTAClick }) => {
   const springY2 = useTransform(springY, (y) => y * 2);
   const springX3 = useTransform(springX, (x) => x * 3);
   const springYNeg1 = useTransform(springY, (y) => y * -1);
-  const springX10 = useTransform(springX, (x) => x * 10);
   
   // Pre-computed dynamic transforms for floating elements (individual declarations)
   const dynamicX0 = useTransform(springX, (x) => x * 1);
@@ -140,9 +139,9 @@ const PremiumHero: React.FC<PremiumHeroProps> = ({ onCTAClick }) => {
     <div ref={containerRef} className="relative min-h-screen overflow-hidden bg-[#0A0A0A]">
       {/* Futuristic Background System */}
       <div className="absolute inset-0">
-        {/* Deep Space Gradient with Vibrant Accents */}
+        {/* Deep Space Gradient with Vibrant Accents (use primary tokens) */}
         <motion.div 
-          className="absolute inset-0 bg-gradient-to-br from-[#0A0A0A] via-slate-900/50 to-purple-900/30"
+          className="absolute inset-0 bg-gradient-to-br from-[#0A0A0A] via-slate-900/50 to-primary-900/30"
           style={{ scale, opacity }}
         />
         
@@ -154,7 +153,7 @@ const PremiumHero: React.FC<PremiumHeroProps> = ({ onCTAClick }) => {
           {[...Array(6)].map((_, i) => (
             <motion.div
               key={i}
-              className="absolute bg-gradient-to-r from-transparent via-[#B065FF]/40 to-transparent"
+              className="absolute bg-gradient-to-r from-transparent via-primary-500/40 to-transparent"
               style={{
                 width: '1px',
                 height: '150vh',
@@ -166,9 +165,9 @@ const PremiumHero: React.FC<PremiumHeroProps> = ({ onCTAClick }) => {
                 opacity: [0, 0.8, 0],
                 scaleY: [0.3, 1, 0.3],
                 boxShadow: [
-                  "0 0 5px #B065FF",
-                  "0 0 20px #B065FF, 0 0 30px #B065FF",
-                  "0 0 5px #B065FF"
+                  "0 0 5px rgb(var(--tw-color-primary-500))",
+                  "0 0 20px rgb(var(--tw-color-primary-500)), 0 0 30px rgb(var(--tw-color-primary-500))",
+                  "0 0 5px rgb(var(--tw-color-primary-500))"
                 ]
               }}
               transition={{
@@ -189,7 +188,7 @@ const PremiumHero: React.FC<PremiumHeroProps> = ({ onCTAClick }) => {
             style={{
               top: '45%',
               left: '50%',
-              background: 'radial-gradient(circle, #B065FF/60, #6633CC/30, transparent 70%)',
+              background: 'radial-gradient(circle, rgba(var(--tw-color-primary-500),0.6), rgba(var(--tw-color-primary-700),0.3), transparent 70%)',
               filter: 'blur(20px)',
               transform: 'translate(-50%, -50%)',
               x: springX,
@@ -202,9 +201,9 @@ const PremiumHero: React.FC<PremiumHeroProps> = ({ onCTAClick }) => {
               scale: [1, 1.5, 1],
               opacity: [0.6, 1, 0.6],
               boxShadow: [
-                "0 0 20px #B065FF",
-                "0 0 60px #B065FF, 0 0 100px #6633CC",
-                "0 0 20px #B065FF"
+                "0 0 20px rgb(var(--tw-color-primary-500))",
+                "0 0 60px rgb(var(--tw-color-primary-500)), 0 0 100px rgb(var(--tw-color-primary-700))",
+                "0 0 20px rgb(var(--tw-color-primary-500))"
               ]
             }}
             transition={{
@@ -220,7 +219,7 @@ const PremiumHero: React.FC<PremiumHeroProps> = ({ onCTAClick }) => {
             style={{
               top: '20%',
               left: '20%',
-              background: 'radial-gradient(circle, #6633CC/80, #B065FF/40, transparent 70%)',
+              background: 'radial-gradient(circle, rgba(var(--tw-color-primary-700),0.8), rgba(var(--tw-color-primary-500),0.4), transparent 70%)',
               filter: 'blur(15px)',
               x: springX2,
               y: springY15,
@@ -247,7 +246,7 @@ const PremiumHero: React.FC<PremiumHeroProps> = ({ onCTAClick }) => {
             style={{
               top: '70%',
               right: '15%',
-              background: 'radial-gradient(circle, #B065FF/70, #6633CC/35, transparent 70%)',
+              background: 'radial-gradient(circle, rgba(var(--tw-color-primary-500),0.7), rgba(var(--tw-color-primary-700),0.35), transparent 70%)',
               filter: 'blur(12px)',
               x: springXNeg15,
               y: springY2,
@@ -271,7 +270,7 @@ const PremiumHero: React.FC<PremiumHeroProps> = ({ onCTAClick }) => {
 
           {/* Tertiary Node - Portal Ring Effect */}
           <motion.div
-            className="absolute w-20 h-20 rounded-full border border-[#B065FF]/50"
+            className="absolute w-20 h-20 rounded-full border border-primary-500/50"
             style={{
               top: '35%',
               left: '75%',
@@ -284,11 +283,11 @@ const PremiumHero: React.FC<PremiumHeroProps> = ({ onCTAClick }) => {
             whileInView={{
               scale: [1, 2, 1],
               rotate: [0, 360],
-              borderColor: ["#B065FF80", "#6633CC80", "#B065FF80"],
+              borderColor: ["rgba(var(--tw-color-primary-500),0.5)", "rgba(var(--tw-color-primary-700),0.5)", "rgba(var(--tw-color-primary-500),0.5)"],
               boxShadow: [
-                "0 0 10px #B065FF",
-                "0 0 40px #B065FF, 0 0 60px #6633CC",
-                "0 0 10px #B065FF"
+                "0 0 10px rgb(var(--tw-color-primary-500))",
+                "0 0 40px rgb(var(--tw-color-primary-500)), 0 0 60px rgb(var(--tw-color-primary-700))",
+                "0 0 10px rgb(var(--tw-color-primary-500))"
               ]
             }}
             transition={{
@@ -328,15 +327,15 @@ const PremiumHero: React.FC<PremiumHeroProps> = ({ onCTAClick }) => {
             >
               <div 
                 className={`
-                  ${i % 4 === 0 ? 'w-1 h-1 bg-[#B065FF] rounded-full' :
-                    i % 4 === 1 ? 'w-0.5 h-6 bg-gradient-to-b from-[#B065FF] to-[#6633CC] rounded-full' :
-                    i % 4 === 2 ? 'w-2 h-2 bg-[#6633CC] rotate-45 rounded-sm' :
-                    'w-3 h-0.5 bg-gradient-to-r from-[#B065FF] to-[#6633CC] rounded-full'
+                  ${i % 4 === 0 ? 'w-1 h-1 bg-primary-500 rounded-full' :
+                    i % 4 === 1 ? 'w-0.5 h-6 bg-gradient-to-b from-primary-500 to-primary-700 rounded-full' :
+                    i % 4 === 2 ? 'w-2 h-2 bg-primary-700 rotate-45 rounded-sm' :
+                    'w-3 h-0.5 bg-gradient-to-r from-primary-500 to-primary-700 rounded-full'
                   } 
                   opacity-70 shadow-lg
                 `}
                 style={{
-                  boxShadow: `0 0 10px ${i % 2 === 0 ? '#B065FF' : '#6633CC'}`,
+                  boxShadow: `0 0 10px ${i % 2 === 0 ? 'rgb(var(--tw-color-primary-500))' : 'rgb(var(--tw-color-primary-700))'}`,
                 }}
               />
             </motion.div>
@@ -353,30 +352,30 @@ const PremiumHero: React.FC<PremiumHeroProps> = ({ onCTAClick }) => {
       >
         <div className="max-w-7xl mx-auto text-center">
           
-          {/* Tech Innovation Badge */}
+          {/* Honest Value Proposition Badge */}
           <motion.div 
-            className="mb-16"
+            className="mb-12"
             style={{ y: y2 }}
             variants={textVariants}
           >
             <motion.div
-              className="inline-flex items-center gap-6 px-8 py-4 rounded-full border border-[#B065FF]/20 bg-[#B065FF]/5 backdrop-blur-xl"
+              className="inline-flex items-center gap-4 px-6 py-3 rounded-full border border-primary-500/30 bg-primary-500/10 backdrop-blur-xl"
               whileHover={{ 
                 scale: 1.05, 
-                borderColor: "#B065FF80",
-                backgroundColor: "#B065FF10",
-                boxShadow: "0 20px 40px rgba(176, 101, 255, 0.3)"
+                borderColor: "rgba(90, 46, 138, 0.5)",
+                backgroundColor: "rgba(90, 46, 138, 0.15)",
+                boxShadow: "0 20px 40px rgba(90, 46, 138, 0.2)"
               }}
               transition={{ duration: 0.5 }}
             >
               <motion.div 
-                className="w-3 h-3 rounded-full bg-gradient-to-r from-[#B065FF] via-[#6633CC] to-[#B065FF]"
+                className="w-2 h-2 rounded-full bg-primary-500"
                 animate={{ 
-                  scale: [1, 1.5, 1],
+                  scale: [1, 1.3, 1],
                   boxShadow: [
-                    "0 0 0 0 rgba(176, 101, 255, 0.7)",
-                    "0 0 0 10px rgba(176, 101, 255, 0)",
-                    "0 0 0 0 rgba(176, 101, 255, 0.7)"
+                    "0 0 0 0 rgba(90,46,138,0.7)",
+                    "0 0 0 6px rgba(90,46,138,0)",
+                    "0 0 0 0 rgba(90,46,138,0.7)"
                   ]
                 }}
                 transition={{ 
@@ -385,47 +384,42 @@ const PremiumHero: React.FC<PremiumHeroProps> = ({ onCTAClick }) => {
                   ease: "easeInOut"
                 }}
               />
-              <span className="text-white/90 text-sm tracking-[0.3em] uppercase font-light">
-                Next-Generation Digital Innovation
+              <span className="text-primary-400 text-sm font-medium">
+                🚀 New Startup • Seeking First Clients
               </span>
-              <motion.div 
-                className="w-8 h-8 rounded-full border border-[#B065FF]/30 flex items-center justify-center"
-                animate={{ rotate: [0, 360] }}
-                transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
-              >
-                <div className="w-2 h-2 bg-[#B065FF] rounded-full" />
-              </motion.div>
+              <span className="text-white/70 text-sm">
+                • Competitive Rates • Dedicated Service
+              </span>
             </motion.div>
           </motion.div>
 
-          {/* Cinematic Headlines */}
+          {/* Powerful Headline - Lead Generation Focused */}
           <motion.div 
             ref={titleRef}
-            className="mb-12"
+            className="mb-8"
             style={{ y: y1 }}
           >
             <motion.h1 
-              className="text-7xl sm:text-8xl lg:text-9xl xl:text-[12rem] font-thin text-white mb-12 leading-none tracking-tighter"
+              className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-bold text-white mb-6 leading-tight tracking-tight"
               variants={textVariants}
             >
               <motion.div className="overflow-hidden">
                 <motion.span 
                   className="block"
-                  initial={{ y: 200, opacity: 0 }}
+                  initial={{ y: 100, opacity: 0 }}
                   animate={isInView ? { y: 0, opacity: 1 } : {}}
-                  transition={{ duration: 1.5, delay: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
+                  transition={{ duration: 1.2, delay: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
                 >
-                  VERVE
+                  Your Vision.
                 </motion.span>
               </motion.div>
               <motion.div className="overflow-hidden relative">
                 <motion.span 
-                  className="block relative z-10 bg-gradient-to-r from-[#B065FF] via-white to-[#6633CC] bg-clip-text text-transparent"
-                  initial={{ y: 200, opacity: 0 }}
+                  className="block relative z-10 bg-gradient-to-r from-primary-500 via-white to-primary-700 bg-clip-text text-transparent"
+                  initial={{ y: 100, opacity: 0 }}
                   animate={isInView ? { y: 0, opacity: 1 } : {}}
-                  transition={{ duration: 1.5, delay: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
+                  transition={{ duration: 1.2, delay: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
                   style={{ 
-                    x: springX10,
                     backgroundSize: "200% 200%"
                   }}
                 >
@@ -434,101 +428,111 @@ const PremiumHero: React.FC<PremiumHeroProps> = ({ onCTAClick }) => {
                       backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
                     }}
                     transition={{
-                      duration: 6,
+                      duration: 4,
                       repeat: Infinity,
                       ease: "linear"
                     }}
                   >
-                    APEX
+                    Launched.
                   </motion.span>
                 </motion.span>
                 {/* Enhanced Luminous Glow Effect */}
                 <motion.div
-                  className="absolute inset-0 bg-gradient-to-r from-[#B065FF]/40 via-[#6633CC]/50 to-[#B065FF]/40 blur-3xl"
+                  className="absolute inset-0 bg-gradient-to-r from-primary-500/30 via-primary-600/40 to-primary-500/30 blur-2xl"
                   animate={{
-                    scale: [1, 1.8, 1],
-                    opacity: [0.4, 1, 0.4],
+                    scale: [1, 1.4, 1],
+                    opacity: [0.3, 0.7, 0.3],
                   }}
                   transition={{
-                    duration: 4,
+                    duration: 3,
                     repeat: Infinity,
                     ease: "easeInOut"
                   }}
                 />
               </motion.div>
+              <motion.div className="overflow-hidden">
+                <motion.span 
+                  className="block text-white/90"
+                  initial={{ y: 100, opacity: 0 }}
+                  animate={isInView ? { y: 0, opacity: 1 } : {}}
+                  transition={{ duration: 1.2, delay: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
+                >
+                  Globally.
+                </motion.span>
+              </motion.div>
             </motion.h1>
           </motion.div>
 
-          {/* Premium Subtitle with Morphing Effect */}
+          {/* Value Proposition with Pain Point Solutions */}
           <motion.div 
-            className="mb-20"
+            className="mb-16"
             style={{ y: y2 }}
           >
             <motion.div
-              className="max-w-5xl mx-auto"
+              className="max-w-4xl mx-auto"
               variants={textVariants}
               initial="hidden"
               animate={isInView ? "visible" : "hidden"}
-              transition={{ delay: 1.2 }}
+              transition={{ delay: 0.9 }}
             >
               <motion.p 
-                className="text-2xl sm:text-3xl lg:text-4xl text-white/80 font-light leading-relaxed mb-8"
+                className="text-xl sm:text-2xl lg:text-3xl text-white/90 font-medium leading-relaxed mb-8"
               >
-                We don't just build products —{" "}
+                Complete Product Team • From Scratch to Scale •{" "}
                 <motion.span 
-                  className="bg-gradient-to-r from-[#B065FF] via-white to-[#6633CC] bg-clip-text text-transparent font-normal"
+                  className="bg-gradient-to-r from-primary-500 via-white to-primary-700 bg-clip-text text-transparent font-semibold"
                   style={{ backgroundSize: "200% 200%" }}
                   animate={{
                     backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
                   }}
                   transition={{
-                    duration: 6,
+                    duration: 4,
                     repeat: Infinity,
                     ease: "linear"
                   }}
                 >
-                  we engineer digital futures
-                </motion.span>{" "}
-                that transform entire ecosystems
+                  Affordable Excellence
+                </motion.span>
+              </motion.p>
+              <motion.p 
+                className="text-lg sm:text-xl text-white/70 leading-relaxed"
+              >
+                We're building Verve Apex from the ground up and actively seeking our first clients. 
+                Get premium development service at startup-friendly rates as we grow together.
               </motion.p>
             </motion.div>
           </motion.div>
 
-          {/* Cinematic CTA Section */}
+          {/* High-Converting CTA Section */}
           <motion.div 
-            className="flex flex-col sm:flex-row gap-8 justify-center items-center mb-24"
-            initial={{ opacity: 0, y: 60 }}
+            className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-20"
+            initial={{ opacity: 0, y: 40 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 1.5, delay: 2 }}
+            transition={{ duration: 1.2, delay: 1.4 }}
           >
             <motion.button
               onClick={onCTAClick}
-              className="group relative px-16 py-6 bg-gradient-to-r from-[#B065FF] via-[#6633CC] to-[#B065FF] text-white font-medium text-lg rounded-full overflow-hidden"
-              whileHover={{ scale: 1.05, y: -5 }}
+              className="group relative px-12 py-5 bg-gradient-to-r from-primary-500 via-primary-600 to-primary-700 text-white font-semibold text-lg rounded-xl overflow-hidden"
+              whileHover={{ scale: 1.05, y: -3 }}
               whileTap={{ scale: 0.95 }}
               transition={{ type: "spring", stiffness: 400, damping: 10 }}
               style={{
-                boxShadow: "0 20px 40px rgba(176, 101, 255, 0.4)"
+                boxShadow: "0 15px 35px rgba(90, 46, 138, 0.4)"
               }}
             >
               <motion.div
-                className="absolute inset-0 bg-gradient-to-r from-[#6633CC] via-[#B065FF] to-[#6633CC]"
+                className="absolute inset-0 bg-gradient-to-r from-primary-700 via-primary-500 to-primary-700"
                 initial={{ x: "-100%" }}
                 whileHover={{ x: "0%" }}
-                transition={{ duration: 0.6, ease: "easeOut" }}
+                transition={{ duration: 0.5, ease: "easeOut" }}
               />
-              <span className="relative z-10 flex items-center gap-4">
-                Enter the Future
+              <span className="relative z-10 flex items-center gap-3">
+                Get Free Consultation
                 <motion.div
                   className="w-2 h-2 bg-white rounded-full"
                   animate={{
-                    scale: [1, 2, 1],
-                    opacity: [1, 0.5, 1],
-                    boxShadow: [
-                      "0 0 5px white",
-                      "0 0 15px white",
-                      "0 0 5px white"
-                    ]
+                    scale: [1, 1.5, 1],
+                    opacity: [1, 0.6, 1],
                   }}
                   transition={{
                     duration: 2,
@@ -538,82 +542,44 @@ const PremiumHero: React.FC<PremiumHeroProps> = ({ onCTAClick }) => {
                 />
               </span>
             </motion.button>
-
-            <motion.button
-              className="group px-16 py-6 border border-[#B065FF]/30 text-white/90 font-medium text-lg rounded-full backdrop-blur-xl hover:bg-[#B065FF]/10 hover:border-[#B065FF]/60 transition-all duration-700"
-              whileHover={{ scale: 1.05, y: -5 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <span className="flex items-center gap-4">
-                Explore Innovation
-                <motion.div
-                  className="w-8 h-8 border border-[#B065FF]/40 rounded-full flex items-center justify-center"
-                  whileHover={{ rotate: 180 }}
-                  transition={{ duration: 0.5 }}
-                >
-                  <motion.div
-                    className="w-1 h-1 bg-[#B065FF] rounded-full"
-                    animate={{
-                      scale: [1, 1.5, 1],
-                      opacity: [0.6, 1, 0.6],
-                      boxShadow: [
-                        "0 0 3px #B065FF",
-                        "0 0 10px #B065FF",
-                        "0 0 3px #B065FF"
-                      ]
-                    }}
-                    transition={{
-                      duration: 3,
-                      repeat: Infinity,
-                      ease: "easeInOut"
-                    }}
-                  />
-                </motion.div>
-              </span>
-            </motion.button>
           </motion.div>
 
-          {/* Future-Tech Metrics */}
+          {/* Honest Metrics - Building From Scratch */}
           <motion.div 
-            className="grid grid-cols-2 lg:grid-cols-4 gap-12 max-w-6xl mx-auto"
-            initial={{ opacity: 0, y: 80 }}
+            className="grid grid-cols-2 lg:grid-cols-4 gap-8 max-w-5xl mx-auto"
+            initial={{ opacity: 0, y: 50 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 2, delay: 2.5 }}
+            transition={{ duration: 1.5, delay: 1.8 }}
           >
             {[
-              { metric: "15+", label: "Years of Innovation", color: "from-[#B065FF] to-[#6633CC]" },
-              { metric: "200+", label: "Digital Solutions", color: "from-[#6633CC] to-[#B065FF]" },
-              { metric: "99.8%", label: "Client Success", color: "from-[#B065FF] to-white" },
-              { metric: "∞", label: "Infinite Possibilities", color: "from-white to-[#B065FF]" }
+              { metric: "From", label: "Scratch to Scale", color: "from-primary-500 to-primary-700" },
+              { metric: "6+", label: "Years Experience", color: "from-blue-500 to-blue-600" },
+              { metric: "24h", label: "Response Time", color: "from-green-500 to-green-600" },
+              { metric: "100%", label: "Commitment", color: "from-yellow-500 to-yellow-600" }
             ].map((item, index) => (
               <motion.div 
                 key={index}
                 className="text-center group"
-                initial={{ opacity: 0, scale: 0.8, y: 50 }}
+                initial={{ opacity: 0, scale: 0.8, y: 30 }}
                 animate={isInView ? { opacity: 1, scale: 1, y: 0 } : {}}
-                transition={{ duration: 1.5, delay: 2.8 + index * 0.2, ease: "easeOut" }}
-                whileHover={{ scale: 1.1, y: -10 }}
+                transition={{ duration: 1.2, delay: 2.0 + index * 0.15, ease: "easeOut" }}
+                whileHover={{ scale: 1.05, y: -5 }}
               >
                 <motion.div 
-                  className={`text-5xl lg:text-6xl xl:text-7xl font-thin bg-gradient-to-r ${item.color} bg-clip-text text-transparent mb-4`}
+                  className={`text-4xl lg:text-5xl xl:text-6xl font-bold bg-gradient-to-r ${item.color} bg-clip-text text-transparent mb-2`}
                   animate={{
-                    scale: [1, 1.05, 1],
-                    filter: [
-                      "drop-shadow(0 0 5px #B065FF)",
-                      "drop-shadow(0 0 20px #B065FF)",
-                      "drop-shadow(0 0 5px #B065FF)"
-                    ]
+                    scale: [1, 1.02, 1],
                   }}
                   transition={{
-                    duration: 4,
+                    duration: 3,
                     repeat: Infinity,
-                    delay: index * 1,
+                    delay: index * 0.5,
                     ease: "easeInOut"
                   }}
                 >
                   {item.metric}
                 </motion.div>
-                <div className="text-white/70 text-sm tracking-wider font-light uppercase">
+                <div className="text-white/70 text-sm font-medium">
                   {item.label}
                 </div>
               </motion.div>
@@ -631,23 +597,23 @@ const PremiumHero: React.FC<PremiumHeroProps> = ({ onCTAClick }) => {
         style={{ y: y3 }}
       >
         <motion.div 
-          className="w-8 h-16 border border-[#B065FF]/30 rounded-full flex justify-center p-3 backdrop-blur-xl"
+          className="w-8 h-16 border border-primary-500/30 rounded-full flex justify-center p-3 backdrop-blur-xl"
           whileHover={{ 
-            borderColor: "#B065FF80", 
+            borderColor: "rgba(var(--tw-color-primary-500),0.5)", 
             scale: 1.1,
-            boxShadow: "0 0 20px rgba(176, 101, 255, 0.5)"
+            boxShadow: "0 0 20px rgba(90, 46, 138, 0.5)"
           }}
           transition={{ duration: 0.3 }}
         >
           <motion.div 
-            className="w-1 h-4 bg-gradient-to-b from-[#B065FF] via-[#6633CC] to-[#B065FF] rounded-full"
+            className="w-1 h-4 bg-gradient-to-b from-primary-500 via-primary-600 to-primary-700 rounded-full"
             animate={{ 
               y: [0, 20, 0],
               opacity: [1, 0.3, 1],
               boxShadow: [
-                "0 0 5px #B065FF",
-                "0 0 15px #B065FF",
-                "0 0 5px #B065FF"
+                "0 0 5px rgb(var(--tw-color-primary-500))",
+                "0 0 15px rgb(var(--tw-color-primary-500))",
+                "0 0 5px rgb(var(--tw-color-primary-500))"
               ]
             }}
             transition={{ 
@@ -678,7 +644,7 @@ const PremiumHero: React.FC<PremiumHeroProps> = ({ onCTAClick }) => {
         <div className="absolute inset-0 bg-gradient-to-r from-[#0A0A0A]/60 via-transparent to-[#0A0A0A]/60" />
         <div className="absolute inset-0 bg-gradient-to-b from-[#0A0A0A]/40 via-transparent to-[#0A0A0A]/80" />
         <motion.div 
-          className="absolute inset-0 bg-gradient-radial from-transparent via-[#B065FF]/5 to-transparent"
+          className="absolute inset-0 bg-gradient-radial from-transparent via-primary-500/5 to-transparent"
           animate={{
             opacity: [0.3, 0.6, 0.3],
             scale: [1, 1.2, 1]

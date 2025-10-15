@@ -3,7 +3,6 @@
 @tailwind utilities;
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
-
 body {
   margin: 0;
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -30,10 +29,10 @@ code {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #B065FF;
+  background: #5A2E8A; /* primary-500 */
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #6633CC;
+  background: #4C2676; /* primary-600 */
 }

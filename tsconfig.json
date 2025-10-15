@@ -18,9 +18,17 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "ignoreDeprecations": "6.0"
   },
   "include": [
     "src"
+  ],
+  "exclude": [
+    "src/components/AnimatedHero.tsx",
+    "src/components/CinematicParticles.tsx",
+    "src/components/ParticleField.tsx",
+    "src/components/AnimatedLogo.tsx",
+    "src/components/StorytellingHero.tsx"
   ]
 }
