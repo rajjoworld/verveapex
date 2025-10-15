@@ -12,7 +12,7 @@ const Footer: React.FC = () => {
           <div className="md:col-span-2">
             <Link to="/" className="flex items-center mb-4">
               <motion.span 
-                className="text-2xl font-bold bg-gradient-to-r from-primary-500 to-white bg-clip-text text-transparent"
+                className="text-2xl font-heading bg-gradient-to-r from-primary-500 to-white bg-clip-text text-transparent"
                 whileHover={{ scale: 1.05 }}
                 transition={{ duration: 0.2 }}
               >
@@ -68,7 +68,7 @@ const Footer: React.FC = () => {
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-lg font-semibold mb-4 text-primary-400">Quick Links</h3>
+            <h3 className="text-lg font-heading mb-4 text-primary-400">Quick Links</h3>
             <ul className="space-y-2">
               <motion.li whileHover={{ x: 5 }}>
                 <Link to="/#book-a-call" className="text-white/70 hover:text-primary-400 transition-colors" onClick={() => trackEvent('book_call_click', { location: 'footer' })}>Book a Call</Link>
@@ -78,7 +78,7 @@ const Footer: React.FC = () => {
 
           {/* Contact Info */}
           <div>
-            <h3 className="text-lg font-semibold mb-4 text-primary-400">Contact</h3>
+            <h3 className="text-lg font-heading mb-4 text-primary-400">Contact</h3>
             <ul className="space-y-2 text-white/70">
               <motion.li whileHover={{ x: 5 }}>
                 <span className="hover:text-primary-400 transition-colors cursor-pointer">contact@verveapex.com</span>

@@ -400,7 +400,7 @@ const PremiumHero: React.FC<PremiumHeroProps> = ({ onCTAClick }) => {
             style={{ y: y1 }}
           >
             <motion.h1 
-              className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-bold text-white mb-6 leading-tight tracking-tight"
+              className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-heading text-white mb-6 leading-tight tracking-tight"
               variants={textVariants}
             >
               <motion.div className="overflow-hidden">
@@ -476,15 +476,15 @@ const PremiumHero: React.FC<PremiumHeroProps> = ({ onCTAClick }) => {
               transition={{ delay: 0.9 }}
             >
               <motion.p 
-                className="text-xl sm:text-2xl lg:text-3xl text-white/90 font-medium leading-relaxed mb-8"
+                className="text-xl sm:text-2xl lg:text-3xl text-white/90 font-display leading-relaxed mb-8"
               >
                 From wireframe to live users — premium builds at founder-friendly prices.  
                 Expert team. Fast start. 24-hour response.
               </motion.p>
               <ABText
                 test={AB_TESTS.hero_subtitle}
-                defaultText="**Featured outcome:** First demo in 2 weeks • Project delivered with demo, handoff docs & 1 month free support."
-                className="text-lg sm:text-xl text-white/70 leading-relaxed mb-8 font-semibold"
+                defaultText="We don't just build and leave. Your launch comes with a working demo, step-by-step documentation, and one month of dedicated support—so you're set up to win."
+                className="text-lg sm:text-xl text-white/70 leading-relaxed mb-8 font-display"
               />
             </motion.div>
           </motion.div>
@@ -544,7 +544,7 @@ const PremiumHero: React.FC<PremiumHeroProps> = ({ onCTAClick }) => {
                 whileHover={{ scale: 1.05, y: -5 }}
               >
                 <motion.div 
-                  className={`text-4xl lg:text-5xl xl:text-6xl font-bold bg-gradient-to-r ${item.color} bg-clip-text text-transparent mb-2`}
+                  className={`text-4xl lg:text-5xl xl:text-6xl font-bold bg-gradient-to-r ${item.color} bg-clip-text text-transparent mb-2 font-tech`}
                   animate={{
                     scale: [1, 1.02, 1],
                   }}

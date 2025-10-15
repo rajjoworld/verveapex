@@ -183,7 +183,7 @@ export const AB_TESTS = {
         weight: 50,
         component: 'text',
         props: {
-          text: '**Featured outcome:** First demo in 2 weeks • Project delivered with demo, handoff docs & 1 month free support.'
+          text: 'Delivered with demo, docs, and 1 month support.'
         }
       },
       {
@@ -192,7 +192,7 @@ export const AB_TESTS = {
         weight: 50,
         component: 'text',
         props: {
-          text: '**Featured outcome:** Project delivered with demo, handoff docs & 1 month free support.'
+          text: 'Delivered with demo, docs, and 1 month support.'
         }
       }
     ],

@@ -8,12 +8,9 @@ import SEO from '../components/SEO';
 import UltimateHowWeWork from '../components/UltimateHowWeWork';
 import TeamSection from '../components/TeamSection';
 import FAQ from '../components/FAQ';
-import ExitIntentPopup from '../components/ExitIntentPopup';
 import { submitContactForm } from '../services/email';
 import { getStoredUtm } from '../utils/utm';
 import { useBehaviorTracking } from '../hooks/useBehaviorTracking';
-import { ABText } from '../components/ABTestComponent';
-import { AB_TESTS } from '../utils/abTesting';
 
 const Home: React.FC = () => {
   const bookRef = useRef<HTMLDivElement | null>(null);
@@ -153,7 +150,7 @@ const Home: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="text-3xl lg:text-4xl font-bold text-white mb-4">
+            <h2 className="text-3xl lg:text-4xl font-heading text-white mb-4">
               Ready to Build Your Vision?
             </h2>
             <p className="text-xl text-white/70 max-w-2xl mx-auto">
@@ -362,7 +359,7 @@ const Home: React.FC = () => {
                 transition={{ duration: 0.8 }}
               >
                 <motion.h2 
-                  className="text-4xl font-bold mb-4 bg-gradient-to-r from-emerald-400 to-blue-500 bg-clip-text text-transparent"
+                  className="text-4xl font-heading mb-4 bg-gradient-to-r from-emerald-400 to-blue-500 bg-clip-text text-transparent"
                   animate={{ 
                     textShadow: [
                       "0 0 20px rgba(52, 211, 153, 0.5)",

@@ -77,7 +77,7 @@ export const ABButton: React.FC<ABButtonProps> = ({
 
 interface ABTextProps {
   test: ABTest;
-  defaultText?: string;
+  defaultText?: React.ReactNode;
   className?: string;
   onConversion?: (variantId: string, conversionType: string) => void;
 }

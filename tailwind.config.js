@@ -7,6 +7,12 @@ module.exports = {
     extend: {
       fontFamily: {
         'inter': ['Inter', 'sans-serif'],
+        'organetto': ['Organetto', 'serif'],
+        'bebas': ['Bebas Neue', 'sans-serif'],
+        'michroma': ['Michroma', 'monospace'],
+        'sans': ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', 'sans-serif'],
+        'serif': ['Organetto', 'Georgia', 'Cambria', 'Times New Roman', 'serif'],
+        'mono': ['Michroma', 'SFMono-Regular', 'Menlo', 'Monaco', 'Consolas', 'Liberation Mono', 'Courier New', 'monospace'],
       },
       colors: {
         // Brand palette extracted from the can photo

@@ -29,7 +29,7 @@ const blogPosts: BlogPost[] = [
     excerpt: 'Learn how to build a minimum viable product that validates your business idea, attracts early users, and sets you up for scalable growth.',
     content: 'Building an MVP is both an art and a science...',
     author: {
-      name: 'Rajkumar',
+      name: 'Raj',
       avatar: '👨‍💻',
       role: 'Founder & Lead Developer'
     },
@@ -97,7 +97,7 @@ const blogPosts: BlogPost[] = [
     excerpt: 'Navigate the complex world of startup funding with insights on valuation, dilution, runway management, and building investor relationships.',
     content: 'Securing funding is a critical milestone...',
     author: {
-      name: 'Rajkumar',
+      name: 'Raj',
       avatar: '👨‍💼',
       role: 'Founder & CEO'
     },
